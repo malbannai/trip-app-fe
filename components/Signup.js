@@ -6,8 +6,8 @@ import authStore from "../stores/authStore";
 const Signup = () => {
   const [user, setUser] = useState({
     username: "",
-    firstName: "",
-    lastName: "",
+    fname: "",
+    lname: "",
     email: "",
     password: "",
   });
@@ -27,13 +27,11 @@ const Signup = () => {
         </Item>
         <Item floatingLabel>
           <Label>First Name</Label>
-          <Input
-            onChangeText={(firstName) => setUser({ ...user, firstName })}
-          />
+          <Input onChangeText={(fname) => setUser({ ...user, fname })} />
         </Item>
         <Item floatingLabel>
           <Label>Last Name</Label>
-          <Input onChangeText={(lastName) => setUser({ ...user, lastName })} />
+          <Input onChangeText={(lname) => setUser({ ...user, lname })} />
         </Item>
         <Item floatingLabel>
           <Label>Email</Label>
