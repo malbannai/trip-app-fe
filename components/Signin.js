@@ -10,6 +10,7 @@ const Signin = () => {
   });
 
   const handleSubmit = () => {
+    // Remove this commented line
     // await authStore.signup(user);
     authStore.signin(user);
   };
@@ -17,6 +18,7 @@ const Signin = () => {
     <Container>
       <Text style={styles.textTitle}>Signin</Text>
 
+      {/* You're not using this <Form>, if it doesn't change styling, remove it. */}
       <Form>
         <Item floatingLabel>
           <Label>Username</Label>
@@ -39,6 +41,7 @@ const Signin = () => {
 
 export default Signin;
 
+// Move your styles to styled components.
 const styles = StyleSheet.create({
   textButton: {
     color: "pink",

@@ -3,6 +3,10 @@ import { Text, StyleSheet } from "react-native";
 import { Container, Form, Item, Input, Label, Button } from "native-base";
 import authStore from "../stores/authStore";
 
+/**
+ * Same comments from Signin component
+ */
+
 const Signup = () => {
   const [user, setUser] = useState({
     username: "",

@@ -5,6 +5,7 @@ import AsyncStorage from "@react-native-community/async-storage";
 
 class AuthStore {
   user = null;
+
   constructor() {
     makeAutoObservable(this);
   }
@@ -19,10 +20,15 @@ class AuthStore {
     try {
       const res = await instance.post("/signup", userData);
       this.setUser(res.data.token);
+
+      // Remove console logs after you test that everything works
+      // before merging to main.
       console.log("AuthStore -> signup -> res.data.token", res.data.token);
     } catch (error) {
       console.log("AuthStore -> signup -> error", error);
     }
+
+    // this console log also
     console.log("Signup", userData);
   };
 
@@ -30,10 +36,14 @@ class AuthStore {
     try {
       const res = await instance.post("/signin", userData);
       this.setUser(res.data.token);
+
+      // this console log also
       console.log("AuthStore -> signin -> res.data.token", res.data.token);
     } catch (error) {
       console.log("AuthStore -> signin -> error", error);
     }
+
+    // this console log also
     console.log("Signin", userData);
   };
 
@@ -52,4 +62,5 @@ class AuthStore {
 
 const authStore = new AuthStore();
 authStore.checkForToken();
+
 export default authStore;
