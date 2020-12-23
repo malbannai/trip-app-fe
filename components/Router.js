@@ -1,5 +1,6 @@
 import { StyleSheet, Text, View } from "react-native";
 
+import CreateTrip from "./CreateTrip";
 import { NavigationContainer } from "@react-navigation/native";
 import React from "react";
 import Signin from "./Signin";
@@ -12,7 +13,7 @@ const { Navigator, Screen } = createStackNavigator();
 const Router = () => {
   return (
     <NavigationContainer>
-      <Navigator initialRouteName="TripList">
+      <Navigator initialRouteName="CreateTrip">
         <Screen
           name="Signup"
           component={Signup}
@@ -26,6 +27,11 @@ const Router = () => {
         <Screen
           name="TripList"
           component={TripList}
+          options={{ headerShown: false }}
+        />
+        <Screen
+          name="CreateTrip"
+          component={CreateTrip}
           options={{ headerShown: false }}
         />
       </Navigator>

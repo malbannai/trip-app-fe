@@ -2,6 +2,7 @@ trips = [
   {
     id: 1,
     title: "To the beach meditation",
+    description: "This is id 1",
     image:
       "https://travel.home.sndimg.com/content/dam/images/travel/stock/2017/1/9/0/GettyImages-127046314_DOELANYann_Maldives.jpg.rend.hgtvcom.966.644.suffix/1491841349407.jpeg",
     owner: "Mshary",
@@ -9,6 +10,7 @@ trips = [
   {
     id: 2,
     title: "CODED macaron",
+    description: "This is id 2",
     image:
       "https://travel.home.sndimg.com/content/dam/images/travel/stock/2017/1/9/0/GettyImages-127046314_DOELANYann_Maldives.jpg.rend.hgtvcom.966.644.suffix/1491841349407.jpeg",
     owner: "Lailz",
@@ -16,6 +18,7 @@ trips = [
   {
     id: 3,
     title: "Bug hunting",
+    description: "This is id 3",
     image:
       "https://travel.home.sndimg.com/content/dam/images/travel/stock/2017/1/9/0/GettyImages-127046314_DOELANYann_Maldives.jpg.rend.hgtvcom.966.644.suffix/1491841349407.jpeg",
     owner: "Hasan",
