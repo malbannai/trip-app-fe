@@ -1,19 +1,18 @@
-import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 
-//navigation
 import { NavigationContainer } from "@react-navigation/native";
-import { createStackNavigator } from "@react-navigation/stack";
-const { Navigator, Screen } = createStackNavigator();
-
-//components
-import Signup from "./Signup";
+import React from "react";
 import Signin from "./Signin";
+import Signup from "./Signup";
+import TripList from "./TripList";
+import { createStackNavigator } from "@react-navigation/stack";
+
+const { Navigator, Screen } = createStackNavigator();
 
 const Router = () => {
   return (
     <NavigationContainer>
-      <Navigator initialRouteName="Signin">
+      <Navigator initialRouteName="TripList">
         <Screen
           name="Signup"
           component={Signup}
@@ -22,6 +21,11 @@ const Router = () => {
         <Screen
           name="Signin"
           component={Signin}
+          options={{ headerShown: false }}
+        />
+        <Screen
+          name="TripList"
+          component={TripList}
           options={{ headerShown: false }}
         />
       </Navigator>
