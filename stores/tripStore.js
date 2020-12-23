@@ -3,32 +3,7 @@ import { action, makeObservable, observable } from "mobx";
 import instance from "./instance";
 
 class TripStore {
-  trips = [
-    {
-      id: 1,
-      title: "To the beach meditation",
-      description: "This is id 1",
-      image:
-        "https://travel.home.sndimg.com/content/dam/images/travel/stock/2017/1/9/0/GettyImages-127046314_DOELANYann_Maldives.jpg.rend.hgtvcom.966.644.suffix/1491841349407.jpeg",
-      owner: "Mshary",
-    },
-    {
-      id: 2,
-      title: "CODED macaron",
-      description: "This is id 2",
-      image:
-        "https://travel.home.sndimg.com/content/dam/images/travel/stock/2017/1/9/0/GettyImages-127046314_DOELANYann_Maldives.jpg.rend.hgtvcom.966.644.suffix/1491841349407.jpeg",
-      owner: "Lailz",
-    },
-    {
-      id: 3,
-      title: "Bug hunting",
-      description: "This is id 3",
-      image:
-        "https://travel.home.sndimg.com/content/dam/images/travel/stock/2017/1/9/0/GettyImages-127046314_DOELANYann_Maldives.jpg.rend.hgtvcom.966.644.suffix/1491841349407.jpeg",
-      owner: "Hasan",
-    },
-  ];
+  trips = [];
   loading = false;
 
   constructor() {
@@ -52,11 +27,7 @@ class TripStore {
 
   createTrip = (tripData) => {
     try {
-      if (this.trips.length == 0) {
-        tripData.id = 0;
-      } else {
-        tripData.id = this.trips[this.trips.length - 1].id + 1;
-      }
+    const res = await instance.post("/trips", this.items);
       this.trips.push(tripData);
       console.log(this.trips);
     } catch (error) {
@@ -66,5 +37,5 @@ class TripStore {
 }
 
 const tripStore = new TripStore();
-// tripStore.fetchTrips();
+tripStore.fetchTrips();
 export default tripStore;
