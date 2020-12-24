@@ -9,7 +9,7 @@ import {
   Text,
   Thumbnail,
 } from "native-base";
-
+import tripStore from "../stores/tripStore";
 import { Image, TouchableOpacity } from "react-native";
 import React from "react";
 import { observer } from "mobx-react";
@@ -30,7 +30,7 @@ const TripItem = ({ trip, navigation }) => {
         </CardItem>
         <CardItem cardBody>
           <Image
-            source={{ uri: trip.image.replace("localhost", "192.168.8.100") }}
+            source={{ uri: trip.image.replace("localhost", "192.168.1.152") }}
             style={{ height: 200, width: null, flex: 1 }}
           />
         </CardItem>
@@ -50,6 +50,15 @@ const TripItem = ({ trip, navigation }) => {
         <Right>
           <Text>11h ago</Text>
         </Right> */}
+        </CardItem>
+        <CardItem>
+          <Right>
+            <Icon
+              name="trash"
+              type="Ionicons"
+              onPress={() => tripStore.removeTrip(trip.id)}
+            />
+          </Right>
         </CardItem>
       </Card>
     </TouchableOpacity>
