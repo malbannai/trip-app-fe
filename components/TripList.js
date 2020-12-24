@@ -5,7 +5,6 @@ import tripStore from "../stores/tripStore";
 
 import { Content, List, Spinner } from "native-base";
 
-
 const TripList = ({ navigation }) => {
   if (tripStore.loading) return <Spinner />;
   const tripList = tripStore.trips.map((trip) => (
@@ -21,6 +20,7 @@ const TripList = ({ navigation }) => {
 
 export default observer(TripList);
 
+// delete this
 // const tripList = tripStore.trips.map((trip) => (
 //     <TripItem trip={trip} key={trip.id} navigation={navigation} />
 //   ));

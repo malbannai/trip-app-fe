@@ -11,6 +11,7 @@ const Signin = ({ navigation }) => {
   });
 
   const handleSubmit = async () => {
+    // delete this line
     // await authStore.signup(user);
     await authStore.signin(user);
     if (authStore.user) navigation.navigate("TripList");

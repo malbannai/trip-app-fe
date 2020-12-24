@@ -2,7 +2,7 @@ import { Button, Container, Form, Input, Item, Label } from "native-base";
 import React, { useState } from "react";
 import { StyleSheet, Text } from "react-native";
 
-import authStore from "../stores/authStore";
+import authStore from "../stores/authStore"; // unused import
 import tripStore from "../stores/tripStore";
 
 const CreateTrip = () => {
@@ -13,9 +13,10 @@ const CreateTrip = () => {
   });
 
   const handleSubmit = () => {
+    // delete this line
     // await authStore.signup(user);
     tripStore.createTrip(creator);
-    console.log(creator);
+    console.log(creator); // delete console logs
   };
   return (
     <Container>

@@ -35,6 +35,7 @@ const TripItem = ({ trip, navigation }) => {
           />
         </CardItem>
         <CardItem>
+          {/* If you're not using it, delete it. */}
           {/* <Left>
           <Button transparent>
             <Icon active name="thumbs-up" />
