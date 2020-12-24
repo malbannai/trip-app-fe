@@ -7,7 +7,6 @@ import tripStore from "../stores/tripStore";
 
 const CreateTrip = () => {
   const [creator, setCreator] = useState({
-    id: 0,
     title: "",
     description: "",
     image: "",
@@ -16,7 +15,7 @@ const CreateTrip = () => {
   const handleSubmit = () => {
     // await authStore.signup(user);
     tripStore.createTrip(creator);
-    // console.log(creator);
+    console.log(creator);
   };
   return (
     <Container>
