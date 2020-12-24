@@ -15,7 +15,7 @@ const CreateTrip = () => {
   const handleSubmit = () => {
     // await authStore.signup(user);
     tripStore.createTrip(creator);
-    // console.log(creator);
+    console.log(creator);
   };
   return (
     <Container>
