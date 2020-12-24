@@ -18,7 +18,7 @@ const TripDetail = ({ route }) => {
       <CardItem>
         <Left>
           <Body>
-            <Text>Trip titel: {trip.title}</Text>
+            <Text>Trip title: {trip.title}</Text>
             <Text note>Trip Owner: {trip.user.firstName}</Text>
             <Text note>Description: {trip.description}</Text>
           </Body>
