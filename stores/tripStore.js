@@ -1,43 +1,13 @@
-import { action, makeObservable, observable } from "mobx";
+import { makeAutoObservable } from "mobx";
 
 import instance from "./instance";
 
 class TripStore {
-  trips = [
-    {
-      id: 1,
-      title: "To the beach meditation",
-      description: "This is id 1",
-      image:
-        "https://travel.home.sndimg.com/content/dam/images/travel/stock/2017/1/9/0/GettyImages-127046314_DOELANYann_Maldives.jpg.rend.hgtvcom.966.644.suffix/1491841349407.jpeg",
-      owner: "Mshary",
-    },
-    {
-      id: 2,
-      title: "CODED macaron",
-      description: "This is id 2",
-      image:
-        "https://travel.home.sndimg.com/content/dam/images/travel/stock/2017/1/9/0/GettyImages-127046314_DOELANYann_Maldives.jpg.rend.hgtvcom.966.644.suffix/1491841349407.jpeg",
-      owner: "Lailz",
-    },
-    {
-      id: 3,
-      title: "Bug hunting",
-      description: "This is id 3",
-      image:
-        "https://travel.home.sndimg.com/content/dam/images/travel/stock/2017/1/9/0/GettyImages-127046314_DOELANYann_Maldives.jpg.rend.hgtvcom.966.644.suffix/1491841349407.jpeg",
-      owner: "Hasan",
-    },
-  ];
-  loading = false;
+  trips = [];
+  loading = true;
 
   constructor() {
-    makeObservable(this, {
-      trips: observable,
-      loading: observable,
-      fetchTrips: action,
-      createTrip: action,
-    });
+    makeAutoObservable(this);
   }
 
   fetchTrips = async () => {
@@ -50,21 +20,16 @@ class TripStore {
     }
   };
 
-  createTrip = (tripData) => {
+  createTrip = async (newTrip) => {
     try {
-      if (this.trips.length == 0) {
-        tripData.id = 0;
-      } else {
-        tripData.id = this.trips[this.trips.length - 1].id + 1;
-      }
-      this.trips.push(tripData);
-      console.log(this.trips);
+      console.log("tripStore -> createTrip -> res", newTrip);
+      const res = await instance.post("/trips", newTrip);
     } catch (error) {
-      console.error("tripStore -> createTrip -> error", error);
+      console.log("TripStore -> checkoutCart -> error", error);
     }
   };
 }
 
 const tripStore = new TripStore();
-// tripStore.fetchTrips();
+tripStore.fetchTrips();
 export default tripStore;

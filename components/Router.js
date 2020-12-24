@@ -13,7 +13,7 @@ const { Navigator, Screen } = createStackNavigator();
 const Router = () => {
   return (
     <NavigationContainer>
-      <Navigator initialRouteName="CreateTrip">
+      <Navigator initialRouteName="TripList">
         <Screen
           name="Signup"
           component={Signup}
