@@ -1,5 +1,6 @@
 import { StyleSheet, Text, View } from "react-native";
 
+import CreateTrip from "./CreateTrip";
 import { NavigationContainer } from "@react-navigation/native";
 import React from "react";
 import Signin from "./Signin";
@@ -30,8 +31,8 @@ const Router = () => {
           options={{ headerShown: false }}
         />
         <Screen
-          name="TripItem"
-          component={TripItem}
+          name="CreateTrip"
+          component={CreateTrip}
           options={{ headerShown: false }}
         />
       </Navigator>

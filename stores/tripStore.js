@@ -1,4 +1,4 @@
-import { action, makeObservable, observable } from "mobx";
+import { makeAutoObservable } from "mobx";
 
 import instance from "./instance";
 
@@ -7,11 +7,7 @@ class TripStore {
   loading = true;
 
   constructor() {
-    makeObservable(this, {
-      trips: observable,
-      loading: observable,
-      fetchTrips: action,
-    });
+    makeAutoObservable(this);
   }
 
   fetchTrips = async () => {
@@ -23,6 +19,7 @@ class TripStore {
       console.error("tripStore -> fetchTrips -> error", error);
     }
   };
+
   removeTrip = async (tripId) => {
     try {
       console.log("checking delete");
@@ -30,6 +27,15 @@ class TripStore {
       this.trips = this.trips.filter((trip) => trip.id !== tripId);
     } catch (error) {
       console.error("tripStore -> removeTrip -> error", error);
+    }
+  };
+
+  createTrip = async (newTrip) => {
+    try {
+      console.log("tripStore -> createTrip -> res", newTrip);
+      const res = await instance.post("/trips", newTrip);
+    } catch (error) {
+      console.log("TripStore -> checkoutCart -> error", error);
     }
   };
 }

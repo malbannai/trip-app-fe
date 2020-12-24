@@ -1,13 +1,14 @@
+import { Button, Container, Form, Input, Item, Label } from "native-base";
 import React, { useState } from "react";
-import { Text, StyleSheet } from "react-native";
-import { Container, Form, Item, Input, Label, Button } from "native-base";
+import { StyleSheet, Text } from "react-native";
+
 import authStore from "../stores/authStore";
 
 const Signup = () => {
   const [user, setUser] = useState({
     username: "",
-    fname: "",
-    lname: "",
+    firstName: "",
+    lastName: "",
     email: "",
     password: "",
   });
@@ -27,11 +28,13 @@ const Signup = () => {
         </Item>
         <Item floatingLabel>
           <Label>First Name</Label>
-          <Input onChangeText={(fname) => setUser({ ...user, fname })} />
+          <Input
+            onChangeText={(firstName) => setUser({ ...user, firstName })}
+          />
         </Item>
         <Item floatingLabel>
           <Label>Last Name</Label>
-          <Input onChangeText={(lname) => setUser({ ...user, lname })} />
+          <Input onChangeText={(lastName) => setUser({ ...user, lastName })} />
         </Item>
         <Item floatingLabel>
           <Label>Email</Label>
