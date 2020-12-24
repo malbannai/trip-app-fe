@@ -6,6 +6,7 @@ class TripStore {
   trips = [];
   loading = true;
 
+
   constructor() {
     makeAutoObservable(this);
   }

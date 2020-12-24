@@ -8,6 +8,7 @@ import Signin from "./Signin";
 import Signup from "./Signup";
 import TripItem from "./TripItem";
 import TripList from "./TripList";
+import TripDetail from "./TripDetail";
 import { createStackNavigator } from "@react-navigation/stack";
 
 const { Navigator, Screen } = createStackNavigator();
@@ -15,10 +16,11 @@ const { Navigator, Screen } = createStackNavigator();
 const Router = () => {
   return (
     <NavigationContainer>
+
+      <Navigator initialRouteName="TripList">
+
      // <Navigator initialRouteName="Home">
      //   <Screen name="Home" component={Home} options={{ headerShown: false }} />
-
-      <Navigator initialRouteName="Signin">
         <Screen
           name="Signup"
           component={Signup}
@@ -37,6 +39,11 @@ const Router = () => {
         <Screen
           name="CreateTrip"
           component={CreateTrip}
+          options={{ headerShown: false }}
+        />
+        <Screen
+          name="TripDetail"
+          component={TripDetail}
           options={{ headerShown: false }}
         />
       </Navigator>
