@@ -12,6 +12,8 @@ import {
 
 import { Image } from "react-native";
 import React from "react";
+import { observer } from "mobx-react";
+import tripStore from "../stores/tripStore";
 
 const TripItem = ({ trip, navigation }) => {
   return (
@@ -46,6 +48,15 @@ const TripItem = ({ trip, navigation }) => {
         <Right>
           <Text>11h ago</Text>
         </Right> */}
+      </CardItem>
+      <CardItem>
+        <Right>
+          <Icon
+            name="trash"
+            type="Ionicons"
+            onPress={() => tripStore.removeTrip(trip.id)}
+          />
+        </Right>
       </CardItem>
     </Card>
   );

@@ -4,7 +4,7 @@ import instance from "./instance";
 
 class TripStore {
   trips = [];
-  loading = false;
+  loading = true;
 
   constructor() {
     makeObservable(this, {
@@ -21,6 +21,15 @@ class TripStore {
       this.loading = false;
     } catch (error) {
       console.error("tripStore -> fetchTrips -> error", error);
+    }
+  };
+  removeTrip = async (tripId) => {
+    try {
+      console.log("checking delete");
+      await instance.delete(`/trips/${tripId}`);
+      this.trips = this.trips.filter((trip) => trip.id !== tripId);
+    } catch (error) {
+      console.error("tripStore -> removeTrip -> error", error);
     }
   };
 }

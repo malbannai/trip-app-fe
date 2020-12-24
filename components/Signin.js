@@ -1,17 +1,19 @@
+import { Button, Container, Form, Input, Item, Label } from "native-base";
 import React, { useState } from "react";
-import { Text, StyleSheet } from "react-native";
-import { Container, Form, Item, Input, Label, Button } from "native-base";
+import { StyleSheet, Text } from "react-native";
+
 import authStore from "../stores/authStore";
 
-const Signin = () => {
+const Signin = ({ navigation }) => {
   const [user, setUser] = useState({
     username: "",
     password: "",
   });
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     // await authStore.signup(user);
-    authStore.signin(user);
+    await authStore.signin(user);
+    if (authStore.user) navigation.navigate("TripList");
   };
   return (
     <Container>
