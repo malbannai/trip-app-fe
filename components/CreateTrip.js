@@ -7,7 +7,6 @@ import tripStore from "../stores/tripStore";
 
 const CreateTrip = () => {
   const [creator, setCreator] = useState({
-    id: 0,
     title: "",
     description: "",
     image: "",
