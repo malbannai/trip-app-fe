@@ -10,28 +10,32 @@ import {
   Thumbnail,
 } from "native-base";
 
-import { Image } from "react-native";
+import { Image, TouchableOpacity } from "react-native";
 import React from "react";
+import { observer } from "mobx-react";
 
 const TripItem = ({ trip, navigation }) => {
   return (
-    <Card>
-      <CardItem>
-        <Left>
-          <Body>
-            <Text>{trip.title}</Text>
-            <Text note>{trip.owner}</Text>
-          </Body>
-        </Left>
-      </CardItem>
-      <CardItem cardBody>
-        <Image
-          source={{ uri: trip.image }}
-          style={{ height: 200, width: null, flex: 1 }}
-        />
-      </CardItem>
-      <CardItem>
-        {/* <Left>
+    <TouchableOpacity
+      onPress={() => navigation.navigate("TripDetail", { trip: trip })}
+    >
+      <Card>
+        <CardItem>
+          <Left>
+            <Body>
+              <Text>{trip.title}</Text>
+              <Text note>{trip.owner}</Text>
+            </Body>
+          </Left>
+        </CardItem>
+        <CardItem cardBody>
+          <Image
+            source={{ uri: trip.image.replace("localhost", "192.168.8.100") }}
+            style={{ height: 200, width: null, flex: 1 }}
+          />
+        </CardItem>
+        <CardItem>
+          {/* <Left>
           <Button transparent>
             <Icon active name="thumbs-up" />
             <Text>12 Likes</Text>
@@ -46,9 +50,10 @@ const TripItem = ({ trip, navigation }) => {
         <Right>
           <Text>11h ago</Text>
         </Right> */}
-      </CardItem>
-    </Card>
+        </CardItem>
+      </Card>
+    </TouchableOpacity>
   );
 };
 
-export default TripItem;
+export default observer(TripItem);
