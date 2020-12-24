@@ -3,8 +3,10 @@ import { StyleSheet, Text, View } from "react-native";
 import CreateTrip from "./CreateTrip";
 import { NavigationContainer } from "@react-navigation/native";
 import React from "react";
+import Home from "./Home";
 import Signin from "./Signin";
 import Signup from "./Signup";
+import TripItem from "./TripItem";
 import TripList from "./TripList";
 import TripDetail from "./TripDetail";
 import { createStackNavigator } from "@react-navigation/stack";
@@ -14,7 +16,11 @@ const { Navigator, Screen } = createStackNavigator();
 const Router = () => {
   return (
     <NavigationContainer>
+
       <Navigator initialRouteName="TripList">
+
+     // <Navigator initialRouteName="Home">
+     //   <Screen name="Home" component={Home} options={{ headerShown: false }} />
         <Screen
           name="Signup"
           component={Signup}

@@ -1,3 +1,6 @@
+import { Image } from "react-native";
+import React from "react";
+import { observer } from "mobx-react";
 import {
   Body,
   Card,
@@ -13,6 +16,7 @@ import {
 import { Image, TouchableOpacity } from "react-native";
 import React from "react";
 import { observer } from "mobx-react";
+
 
 const TripItem = ({ trip, navigation }) => {
   return (
@@ -35,7 +39,8 @@ const TripItem = ({ trip, navigation }) => {
           />
         </CardItem>
         <CardItem>
-          {/* <Left>
+
+        {/* <Left>
           <Button transparent>
             <Icon active name="thumbs-up" />
             <Text>12 Likes</Text>
@@ -50,9 +55,11 @@ const TripItem = ({ trip, navigation }) => {
         <Right>
           <Text>11h ago</Text>
         </Right> */}
+
         </CardItem>
       </Card>
     </TouchableOpacity>
+
   );
 };
 
