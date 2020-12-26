@@ -1,5 +1,6 @@
-import styled from "styled-components/native";
 import { Icon } from "native-base";
+import styled from "styled-components/native";
+
 export const HomeBackground = styled.ImageBackground`
   flex: 1;
   width: 100%;
@@ -28,6 +29,7 @@ export const BottomStyling = styled.View`
 `;
 
 export const ButtonStyled = styled.Text`
+
   font-size: 25px;
   color: #fff;
 `;
@@ -59,9 +61,12 @@ export const TotalPrice = styled.Text`
   font-weight: bold;
   margin-left: 10px;
 `;
-export const CartButtonStyled = styled(Icon)`
-  color: white;
-  margin-right: 10px;
+export const ImageButtonStyled = styled(Icon)`
+  color: black;
+  font-size: 100;
+  margin-top: 50;
+  margin-left: 120px;
+  height: 100;
 `;
 export const CartTextStyled = styled.Text`
   color: ${(props) => props.theme.backgroundColor};
@@ -122,7 +127,7 @@ export const AuthButtonText = styled.Text`
   font-size: 18px;
 `;
 export const AuthOther = styled.Text`
-  color: ${(props) => props.theme.pink};
+  color: gray;
   margin-top: 15px;
 `;
 EyeButtonStyled;

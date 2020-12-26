@@ -1,14 +1,14 @@
 import { StyleSheet } from "react-native";
 
 import CreateTrip from "./CreateTrip";
+import Home from "./Home";
 import { NavigationContainer } from "@react-navigation/native";
 import React from "react";
-import Home from "./Home";
 import Signin from "./Signin";
 import Signup from "./Signup";
-import TripList from "./TripList";
 import TripDetail from "./TripDetail";
 import Profile from "./Profile";
+import TripList from "./TripList";
 import { createStackNavigator } from "@react-navigation/stack";
 
 const { Navigator, Screen } = createStackNavigator();
