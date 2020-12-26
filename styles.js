@@ -1,5 +1,6 @@
-import styled from "styled-components/native";
 import { Icon } from "native-base";
+import styled from "styled-components/native";
+
 export const HomeBackground = styled.ImageBackground`
   flex: 1;
   width: 100%;
@@ -122,7 +123,7 @@ export const AuthButtonText = styled.Text`
   font-size: 18px;
 `;
 export const AuthOther = styled.Text`
-  color: ${(props) => props.theme.pink};
+  color: gray;
   margin-top: 15px;
 `;
 EyeButtonStyled;
