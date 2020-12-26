@@ -4,7 +4,9 @@ import React from "react";
 import TripItem from "./TripItem";
 import authStore from "../stores/authStore";
 import { observer } from "mobx-react";
-import tripStore from "../stores/tripStore";
+import tripStore from "../stores/tripStore"; 
+import Profile from "./Profile";
+import { Content, List, Spinner, Text } from "native-base";
 
 const TripList = ({ navigation }) => {
   if (tripStore.loading) return <Spinner />;
@@ -30,7 +32,3 @@ const TripList = ({ navigation }) => {
 };
 
 export default observer(TripList);
-
-// const tripList = tripStore.trips.map((trip) => (
-//     <TripItem trip={trip} key={trip.id} navigation={navigation} />
-//   ));

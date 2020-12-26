@@ -15,7 +15,7 @@ export const TopStyling = styled.View`
 
 export const Title = styled.Text`
   color: #000;
-  font-size: 38;
+  font-size: 38px;
   text-align: center;
 `;
 export const OverLayContainer = styled.View`
@@ -29,12 +29,13 @@ export const BottomStyling = styled.View`
 `;
 
 export const ButtonStyled = styled.Text`
-  font-size: 20;
+
+  font-size: 25px;
   color: #fff;
 `;
 export const BakeryItemStyled = styled.Text`
   color: #000;
-  font-size: 18;
+  font-size: 18px;
   margin-top: 10;
   margin-bottom: 10;
   margin-left: -30;

@@ -16,7 +16,6 @@ const Signin = ({ navigation }) => {
     await authStore.signin(user);
     if (authStore.user) navigation.navigate("TripList"); //change to profile
     //if (authStore.user) navigation.navigate("CreateTrip");
-
   };
   return (
     <Container>

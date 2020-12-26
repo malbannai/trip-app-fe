@@ -4,7 +4,9 @@ import decode from "jwt-decode";
 import AsyncStorage from "@react-native-community/async-storage";
 
 class AuthStore {
+  users = [];
   user = null;
+  loading = true;
   constructor() {
     makeAutoObservable(this);
   }
@@ -52,4 +54,5 @@ class AuthStore {
 
 const authStore = new AuthStore();
 authStore.checkForToken();
+
 export default authStore;
