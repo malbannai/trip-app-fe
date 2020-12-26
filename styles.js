@@ -30,7 +30,7 @@ export const BottomStyling = styled.View`
 
 export const ButtonStyled = styled.Text`
   font-size: 20;
-  color: #000;
+  color: #fff;
 `;
 export const BakeryItemStyled = styled.Text`
   color: #000;
@@ -60,9 +60,12 @@ export const TotalPrice = styled.Text`
   font-weight: bold;
   margin-left: 10px;
 `;
-export const CartButtonStyled = styled(Icon)`
-  color: white;
-  margin-right: 10px;
+export const ImageButtonStyled = styled(Icon)`
+  color: black;
+  font-size: 100;
+  margin-top: 50;
+  margin-left: 120px;
+  height: 100;
 `;
 export const CartTextStyled = styled.Text`
   color: ${(props) => props.theme.backgroundColor};

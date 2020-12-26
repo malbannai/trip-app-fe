@@ -19,12 +19,12 @@ const Home = ({ navigation }) => {
     <HomeBackground source={bgimage}>
       <OverLayContainer>
         <TopStyling>
-          <Title> Explore Trips !</Title>
+          <Title> Explore Trips</Title>
         </TopStyling>
         <BottomStyling>
           <ButtonStyled
             onPress={() => {
-              navigation.navigate("TripList");
+              navigation.navigate("Signin");
             }}
           >
             Click here to skip
