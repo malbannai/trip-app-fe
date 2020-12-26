@@ -1,11 +1,9 @@
 import { makeAutoObservable } from "mobx";
-
 import instance from "./instance";
 
 class TripStore {
   trips = [];
   loading = true;
-
 
   constructor() {
     makeAutoObservable(this);

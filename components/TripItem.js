@@ -30,7 +30,7 @@ const TripItem = ({ trip, navigation }) => {
         </CardItem>
         <CardItem cardBody>
           <Image
-            source={{ uri: trip.image.replace("localhost", "192.168.8.100") }}
+            source={{ uri: trip.image.replace("localhost", "192.168.0.153") }}
             style={{ height: 200, width: null, flex: 1 }}
           />
         </CardItem>
