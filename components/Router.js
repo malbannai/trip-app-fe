@@ -7,7 +7,9 @@ import Signin from "./Signin";
 import Signup from "./Signup";
 import { StyleSheet } from "react-native";
 import TripDetail from "./TripDetail";
+import TripUpdate from "./TripUpdate";
 import TripList from "./TripList";
+
 import { createStackNavigator } from "@react-navigation/stack";
 
 const { Navigator, Screen } = createStackNavigator();
@@ -40,6 +42,11 @@ const Router = () => {
         <Screen
           name="TripDetail"
           component={TripDetail}
+          options={{ headerShown: false }}
+        />
+       <Screen
+          name="TripUpdate"
+          component={TripUpdate}
           options={{ headerShown: false }}
         />
         <Screen

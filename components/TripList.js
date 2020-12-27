@@ -7,6 +7,7 @@ import authStore from "../stores/authStore";
 import { observer } from "mobx-react";
 import tripStore from "../stores/tripStore";
 
+
 const TripList = ({ navigation }) => {
   if (tripStore.loading) return <Spinner />;
   const tripList = tripStore.trips.map((trip) => (

@@ -7,7 +7,6 @@ import { observer } from "mobx-react";
 
 const TripDetail = ({ route, navigation }) => {
   const { trip } = route.params;
-  console.log(trip);
   return (
     <Content>
       <Card style={{ flex: 0 }}>
