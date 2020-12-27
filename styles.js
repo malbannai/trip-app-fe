@@ -11,11 +11,13 @@ export const TopStyling = styled.View`
   height: 40%;
   align-items: center;
   justify-content: center;
+  color: white;
 `;
 
 export const Title = styled.Text`
-  color: #000;
-  font-size: 38px;
+
+  color: white;
+  font-size: 45;
   text-align: center;
 `;
 export const OverLayContainer = styled.View`
@@ -30,8 +32,10 @@ export const BottomStyling = styled.View`
 
 export const ButtonStyled = styled.Text`
 
-  font-size: 25px;
-  color: #fff;
+  font-size: 20px;
+  color: white;
+  font-weight: bold;
+
 `;
 export const BakeryItemStyled = styled.Text`
   color: #000;

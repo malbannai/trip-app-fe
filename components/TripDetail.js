@@ -6,7 +6,6 @@ import { Card, CardItem, Text, Left, Body } from "native-base";
 
 const TripDetail = ({ route }) => {
   const { trip } = route.params;
-  console.log(trip);
   return (
     <Card style={{ flex: 0 }}>
       <CardItem>
