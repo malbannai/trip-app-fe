@@ -11,6 +11,7 @@ import TripUpdate from "./TripUpdate";
 import TripList from "./TripList";
 
 import { createStackNavigator } from "@react-navigation/stack";
+import { observer } from "mobx-react";
 
 const { Navigator, Screen } = createStackNavigator();
 
@@ -44,7 +45,7 @@ const Router = () => {
           component={TripDetail}
           options={{ headerShown: false }}
         />
-       <Screen
+        <Screen
           name="TripUpdate"
           component={TripUpdate}
           options={{ headerShown: false }}
@@ -59,6 +60,6 @@ const Router = () => {
   );
 };
 
-export default Router;
+export default observer(Router);
 
 const styles = StyleSheet.create({});
