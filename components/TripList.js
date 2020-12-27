@@ -1,4 +1,4 @@
-import { Content, Icon, List, Spinner, Text } from "native-base";
+import { Icon, List, Spinner, Text, View } from "native-base";
 
 import React from "react";
 import TripItem from "./TripItem";
@@ -6,8 +6,6 @@ import authStore from "../stores/authStore";
 import { observer } from "mobx-react";
 import tripStore from "../stores/tripStore";
 import Profile from "./Profile";
-import { Content, List, Spinner, Text } from "native-base";
-
 
 const TripList = ({ navigation }) => {
   if (tripStore.loading) return <Spinner />;
@@ -16,7 +14,7 @@ const TripList = ({ navigation }) => {
   ));
 
   return (
-    <Content>
+    <View>
       {authStore.user ? (
         <Icon
           name="person"
@@ -27,8 +25,9 @@ const TripList = ({ navigation }) => {
       ) : (
         <Text onPress={() => navigation.navigate("Signin")}>Signin</Text>
       )}
+
       <List>{tripList}</List>
-    </Content>
+    </View>
   );
 };
 
