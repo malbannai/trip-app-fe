@@ -1,22 +1,23 @@
-import React from "react";
-import { Spinner, Image } from "react-native";
-import { observer } from "mobx-react";
-import profileStore from "../stores/profileStore";
-import authStore from "../stores/authStore";
-import tripStore from "../stores/tripStore";
-import usersStore from "../stores/usersStore";
 import {
-  Container,
-  Header,
-  Content,
+  Body,
+  Button,
   Card,
   CardItem,
-  Text,
-  Body,
+  Container,
+  Content,
+  Header,
   Left,
-  Right,
   List,
+  Right,
 } from "native-base";
+import { Image, Spinner, StyleSheet, Text } from "react-native";
+
+import React from "react";
+import authStore from "../stores/authStore";
+import { observer } from "mobx-react";
+import profileStore from "../stores/profileStore";
+import tripStore from "../stores/tripStore";
+import usersStore from "../stores/usersStore";
 
 const Profile = ({ navigation }) => {
   if (profileStore.loading || tripStore.loading || usersStore.loading)
@@ -40,19 +41,19 @@ const Profile = ({ navigation }) => {
           </CardItem>
           <Left>
             <CardItem cardBody>
-              <Image
+              {/* <Image
                 source={{
                   uri: userProfile.image.replace("localhost", "192.168.0.153"),
                 }}
                 style={{ height: 100, width: 100, flex: 0 }}
-              />
+              /> */}
             </CardItem>
           </Left>
 
           <CardItem bordered>
-            <Body>
-              <Text>{userProfile.bio}</Text>
-            </Body>
+            {/* <Body>
+              <Text>{profileOwner.bio}</Text>
+            </Body> */}
           </CardItem>
           <CardItem bordered>
             <Body>
@@ -75,8 +76,33 @@ const Profile = ({ navigation }) => {
           </CardItem>
         </Card>
       </Content>
+      <Content>
+        <Button block dark onPress={() => navigation.replace("TripList")}>
+          <Text style={styles.textButton}>Explore Trips</Text>
+        </Button>
+        <Button block dark onPress={() => navigation.replace("TripList")}>
+          <Text style={styles.textButton}>My Trips</Text>
+        </Button>
+        <Button block dark onPress={() => navigation.replace("CreateTrip")}>
+          <Text style={styles.textButton}>Create New Trip</Text>
+        </Button>
+      </Content>
     </Container>
   );
 };
 
 export default observer(Profile);
+
+const styles = StyleSheet.create({
+  textButton: {
+    color: "pink",
+    textAlign: "center",
+  },
+  textTitle: {
+    color: "black",
+    textAlign: "center",
+    marginTop: 100,
+  },
+});
+
+// change button triplist to go to user's trip list

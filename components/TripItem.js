@@ -9,8 +9,6 @@ import {
   Text,
   Thumbnail,
 } from "native-base";
-
-
 import { Image, TouchableOpacity, Alert } from "react-native";
 import React from "react";
 import { observer } from "mobx-react";
@@ -73,10 +71,16 @@ const TripItem = ({ trip, navigation }) => {
     </>
 
         <CardItem cardBody>
-          <Image
-            source={{ uri: trip.image.replace("localhost", "192.168.0.153") }} 
+          {/* <Image
+            source={{
+              uri: trip.image.replace(
+                "localhost",
+                "192.168.8.105",
+                "192.168.1.152"
+              ),
+            }}
             style={{ height: 200, width: null, flex: 1 }}
-          />
+          /> */}
         </CardItem>
         <CardItem>
           {/* <Left>

@@ -1,16 +1,13 @@
-import { StyleSheet } from "react-native";
-
 import CreateTrip from "./CreateTrip";
 import Home from "./Home";
 import { NavigationContainer } from "@react-navigation/native";
+import Profile from "./Profile";
 import React from "react";
 import Signin from "./Signin";
 import Signup from "./Signup";
+import { StyleSheet } from "react-native";
 import TripDetail from "./TripDetail";
-
 import TripUpdate from "./TripUpdate";
-
-import Profile from "./Profile";
 import TripList from "./TripList";
 
 import { createStackNavigator } from "@react-navigation/stack";
