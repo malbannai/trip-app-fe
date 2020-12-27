@@ -17,7 +17,7 @@ const Signup = () => {
 
   const handleSubmit = async () => {
     await authStore.signup(user);
-    if (authStore.user) navigation.navigate("TripList"); // change to profile
+    if (authStore.user) navigation.navigate("Profile");
   };
   return (
     <Container>
@@ -62,9 +62,9 @@ const Signup = () => {
           <Text style={styles.textButton}>Signup</Text>
         </Button>
       </Form>
-      {/* <AuthOther onPress={() => navigation.replace("Signin")}>
+      <AuthOther onPress={() => navigation.replace("Signin")}>
         Click here to sign in!
-      </AuthOther> */}
+      </AuthOther>
     </Container>
   );
 };
