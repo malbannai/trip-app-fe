@@ -24,7 +24,7 @@ const Home = ({ navigation }) => {
         <BottomStyling>
           <ButtonStyled
             onPress={() => {
-              navigation.navigate("Signin");
+              navigation.navigate("TripList");
             }}
           >
             Click here to skip

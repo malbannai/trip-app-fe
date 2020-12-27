@@ -1,27 +1,31 @@
+import * as ImagePicker from "expo-image-picker";
+
 import { Button, Container, Form, Input, Item, Label } from "native-base";
+import { Image, Platform, View } from "react-native";
 import React, { useState } from "react";
 import { StyleSheet, Text } from "react-native";
+
+import Constants from "expo-constants";
+import { ImageButtonStyled } from "../styles";
 import authStore from "../stores/authStore";
 import tripStore from "../stores/tripStore";
-import { ImageButtonStyled } from "../styles";
-////image picker imports
 import { useEffect } from "react";
-import { Image, View, Platform } from "react-native";
-import * as ImagePicker from "expo-image-picker";
-import Constants from "expo-constants";
 
-const CreateTrip = () => {
+const CreateTrip = ({ trip, navigation }) => {
   const [creator, setCreator] = useState({
     title: "",
     description: "",
     image: "",
   });
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     // await authStore.signup(user);
     creator.image = image;
-    tripStore.createTrip(creator);
-    console.log(creator);
+
+    const newTrip = await tripStore.createTrip(creator);
+    console.log(newTrip);
+
+    navigation.navigate("TripDetail", { trip: newTrip });
   };
 
   //image-picker start

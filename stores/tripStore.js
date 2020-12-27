@@ -1,5 +1,5 @@
-import { makeAutoObservable } from "mobx";
 import instance from "./instance";
+import { makeAutoObservable } from "mobx";
 
 class TripStore {
   trips = [];
@@ -31,10 +31,10 @@ class TripStore {
 
   createTrip = async (newTrip) => {
     try {
-      console.log("tripStore -> createTrip -> res", newTrip);
       const res = await instance.post("/trips", newTrip);
+      return res.data;
     } catch (error) {
-      console.log("TripStore -> checkoutCart -> error", error);
+      console.log("TripStore -> createTrip -> error", error);
     }
   };
 }
