@@ -6,7 +6,6 @@ class TripStore {
   trips = [];
   loading = true;
 
-
   constructor() {
     makeAutoObservable(this);
   }
@@ -23,7 +22,6 @@ class TripStore {
 
   removeTrip = async (tripId) => {
     try {
-      console.log("checking delete");
       await instance.delete(`/trips/${tripId}`);
       this.trips = this.trips.filter((trip) => trip.id !== tripId);
     } catch (error) {
@@ -33,10 +31,19 @@ class TripStore {
 
   createTrip = async (newTrip) => {
     try {
-      console.log("tripStore -> createTrip -> res", newTrip);
       const res = await instance.post("/trips", newTrip);
     } catch (error) {
-      console.log("TripStore -> checkoutCart -> error", error);
+      console.log("TripStore -> createTrip -> error", error);
+    }
+  };
+
+  updateTrip = async (tripData) => {
+    try {
+      await instance.put(`/trips/${tripData.id}`, tripData);
+      const trip = this.trips.find((item) => item.id === tripData.id);
+      for (const key in trip) trip[key] = tripData[key];
+    } catch (error) {
+      console.log("TripStore -> updateTrip -> error", error);
     }
   };
 }
