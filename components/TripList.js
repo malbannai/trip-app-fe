@@ -3,9 +3,9 @@ import { Icon, List, Spinner, Text, View, Content } from "native-base";
 import Profile from "./Profile";
 import React from "react";
 import TripItem from "./TripItem";
-import authStore from "../stores/authStore";
 import { observer } from "mobx-react";
 import tripStore from "../stores/tripStore";
+import {} from "../styles";
 
 const TripList = ({ navigation }) => {
   if (tripStore.loading) return <Spinner />;
@@ -14,21 +14,9 @@ const TripList = ({ navigation }) => {
   ));
 
   return (
-    <>
-      {authStore.user ? (
-        <Icon
-          name="person"
-          type="Ionicons"
-          style={{ marginLeft: "auto" }}
-          onPress={() => navigation.navigate("Profile")}
-        />
-      ) : (
-        <Text onPress={() => navigation.navigate("Signin")}>Signin</Text>
-      )}
-      <Content>
-        <List>{tripList}</List>
-      </Content>
-    </>
+    <Content>
+      <List>{tripList}</List>
+    </Content>
   );
 };
 
