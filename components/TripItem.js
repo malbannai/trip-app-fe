@@ -11,12 +11,13 @@ import {
 } from "native-base";
 
 import { Image, TouchableOpacity } from "react-native";
-
 import React from "react";
 import { observer } from "mobx-react";
 import tripStore from "../stores/tripStore";
-
+import usersStore from "../stores/usersStore";
+import ip from "../stores/ipaddress";
 const TripItem = ({ trip, navigation }) => {
+  const owner = usersStore.users.find((user) => user.id === trip.userId);
   return (
     <TouchableOpacity
       onPress={() => navigation.navigate("TripDetail", { trip: trip })}
@@ -26,13 +27,20 @@ const TripItem = ({ trip, navigation }) => {
           <Left>
             <Body>
               <Text>{trip.title}</Text>
-              <Text note>{trip.owner}</Text>
+              <Text
+                note
+                onPress={() =>
+                  navigation.navigate("Profile", { profileOwner: owner })
+                }
+              >
+                By {owner.username}
+              </Text>
             </Body>
           </Left>
         </CardItem>
         <CardItem cardBody>
           <Image
-            source={{ uri: trip.image.replace("localhost", "192.168.0.153") }} 
+            source={{ uri: trip.image.replace("localhost", ip) }}
             style={{ height: 200, width: null, flex: 1 }}
           />
         </CardItem>

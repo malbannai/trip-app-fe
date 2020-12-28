@@ -17,15 +17,16 @@ const CreateTrip = () => {
     image: "",
   });
 
+  const [image, setImage] = useState(null);
+
   const handleSubmit = () => {
     // await authStore.signup(user);
-    creator.image = image;
+    setCreator({ ...creator, image });
     tripStore.createTrip(creator);
     console.log(creator);
   };
 
   //image-picker start
-  const [image, setImage] = useState(null);
 
   useEffect(() => {
     (async () => {

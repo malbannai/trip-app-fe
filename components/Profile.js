@@ -5,6 +5,7 @@ import profileStore from "../stores/profileStore";
 import authStore from "../stores/authStore";
 import tripStore from "../stores/tripStore";
 import usersStore from "../stores/usersStore";
+import ip from "../stores/ipaddress";
 import {
   Container,
   Header,
@@ -17,18 +18,22 @@ import {
   Right,
   List,
 } from "native-base";
+import TripTitle from "./TripTitle";
 
-const Profile = ({ navigation }) => {
+const Profile = ({ route, navigation }) => {
   if (profileStore.loading || tripStore.loading || usersStore.loading)
     return <Spinner />;
-
-  const profileOwner = usersStore.users.find(
-    (user) => user.id === authStore.user.id
-  );
+  const { profileOwner } = route.params;
+  console.log(profileOwner);
+  // const profileOwner = usersStore.users.find(
+  //   (user) => user.id === authStore.user.id
+  // );
   const userProfile = profileStore.getprofileByuserId(profileOwner.id);
   const mytripList = tripStore.trips
     .filter((trip) => trip.userId === profileOwner.id)
-    .map((trip) => <Text>{trip.title}</Text>);
+    .map((trip) => (
+      <TripTitle trip={trip} key={trip.id} navigation={navigation} />
+    ));
 
   return (
     <Container>
@@ -42,7 +47,7 @@ const Profile = ({ navigation }) => {
             <CardItem cardBody>
               <Image
                 source={{
-                  uri: userProfile.image.replace("localhost", "192.168.0.153"),
+                  uri: userProfile.image.replace("localhost", ip),
                 }}
                 style={{ height: 100, width: 100, flex: 0 }}
               />
@@ -65,7 +70,7 @@ const Profile = ({ navigation }) => {
           <CardItem bordered>
             <Body>
               <Text>My trips are: </Text>
-              <List>{mytripList}</List>
+              <Text>{mytripList}</Text>
             </Body>
           </CardItem>
 

@@ -31,8 +31,11 @@ class TripStore {
 
   createTrip = async (newTrip) => {
     try {
+      const formData = new FormData();
+      for (const key in newTrip) formData.append(key, newTrip[key]);
+
       console.log("tripStore -> createTrip -> res", newTrip);
-      const res = await instance.post("/trips", newTrip);
+      const res = await instance.post("/trips", formData);
     } catch (error) {
       console.log("TripStore -> checkoutCart -> error", error);
     }
