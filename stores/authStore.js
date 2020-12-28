@@ -4,7 +4,10 @@ import decode from "jwt-decode";
 import AsyncStorage from "@react-native-community/async-storage";
 
 class AuthStore {
+  users = [];
   user = null;
+  loading = true;
+
   constructor() {
     makeAutoObservable(this);
   }
@@ -19,10 +22,11 @@ class AuthStore {
     try {
       const res = await instance.post("/signup", userData);
       this.setUser(res.data.token);
-      console.log("AuthStore -> signup -> res.data.token", res.data.token);
     } catch (error) {
       console.log("AuthStore -> signup -> error", error);
     }
+
+    // this console log also
     console.log("Signup", userData);
   };
 
@@ -30,11 +34,9 @@ class AuthStore {
     try {
       const res = await instance.post("/signin", userData);
       this.setUser(res.data.token);
-      console.log("AuthStore -> signin -> res.data.token", res.data.token);
     } catch (error) {
       console.log("AuthStore -> signin -> error", error);
     }
-    console.log("Signin", userData);
   };
 
   checkForToken = async () => {
@@ -43,13 +45,15 @@ class AuthStore {
       const decodedToken = decode(token);
       if (Date.now() < decodedToken.exp) {
         this.setUser(token);
-      } else {
-        this.signout();
       }
+      // else {
+      //   this.signout();
+      // }
     }
   };
 }
 
 const authStore = new AuthStore();
 authStore.checkForToken();
+
 export default authStore;

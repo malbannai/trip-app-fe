@@ -1,7 +1,3 @@
-import React from "react";
-import bgimage from "../onroad.jpg";
-
-// Styling
 import {
   BottomStyling,
   ButtonStyled,
@@ -11,17 +7,24 @@ import {
   TopStyling,
 } from "../styles";
 
+import React from "react";
+import bgimage from "../onroad.jpg";
+import { observer } from "mobx-react";
+import tripStore from "../stores/tripStore";
+
+// Styling
+
 const Home = ({ navigation }) => {
   return (
     <HomeBackground source={bgimage}>
       <OverLayContainer>
         <TopStyling>
-          <Title> Explore Trips !</Title>
+          <Title> Explore Trips</Title>
         </TopStyling>
         <BottomStyling>
           <ButtonStyled
             onPress={() => {
-              navigation.navigate("TripList");
+              navigation.navigate("Signin");
             }}
           >
             Click here to skip
@@ -32,4 +35,4 @@ const Home = ({ navigation }) => {
   );
 };
 
-export default Home;
+export default observer(Home);

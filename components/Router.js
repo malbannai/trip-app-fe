@@ -1,14 +1,17 @@
-import { StyleSheet, Text, View } from "react-native";
-
 import CreateTrip from "./CreateTrip";
-import { NavigationContainer } from "@react-navigation/native";
-import React from "react";
 import Home from "./Home";
+import { NavigationContainer } from "@react-navigation/native";
+import Profile from "./Profile";
+import React from "react";
 import Signin from "./Signin";
 import Signup from "./Signup";
-import TripList from "./TripList";
+import { StyleSheet } from "react-native";
 import TripDetail from "./TripDetail";
+import TripUpdate from "./TripUpdate";
+import TripList from "./TripList";
+
 import { createStackNavigator } from "@react-navigation/stack";
+import { observer } from "mobx-react";
 
 const { Navigator, Screen } = createStackNavigator();
 
@@ -30,7 +33,7 @@ const Router = () => {
         <Screen
           name="TripList"
           component={TripList}
-          options={{ headerShown: false }}
+          options={{ headerShown: true }}
         />
         <Screen
           name="CreateTrip"
@@ -42,11 +45,21 @@ const Router = () => {
           component={TripDetail}
           options={{ headerShown: false }}
         />
+        <Screen
+          name="TripUpdate"
+          component={TripUpdate}
+          options={{ headerShown: false }}
+        />
+        <Screen
+          name="Profile"
+          component={Profile}
+          options={{ headerShown: false }}
+        />
       </Navigator>
     </NavigationContainer>
   );
 };
 
-export default Router;
+export default observer(Router);
 
 const styles = StyleSheet.create({});
