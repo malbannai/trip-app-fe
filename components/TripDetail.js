@@ -1,5 +1,6 @@
 import { Button, Content, Text } from "native-base";
 import React from "react";
+import { StyleSheet } from "react-native";
 import { observer } from "mobx-react";
 import authStore from "../stores/authStore";
 import {
@@ -15,7 +16,6 @@ const TripDetail = ({ route, navigation }) => {
   const { trip } = route.params;
   return (
     <Content>
-
       <DetailsWrapper>
         <TripCardItem>
           <TripTitle>{trip.title}</TripTitle>
@@ -58,3 +58,15 @@ const TripDetail = ({ route, navigation }) => {
 };
 
 export default observer(TripDetail);
+
+const styles = StyleSheet.create({
+  textButton: {
+    color: "pink",
+    textAlign: "center",
+  },
+  textTitle: {
+    color: "black",
+    textAlign: "center",
+    marginTop: 100,
+  },
+});
