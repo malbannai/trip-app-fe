@@ -4,6 +4,7 @@ import { Image } from "react-native";
 import React from "react";
 import { StyleSheet } from "react-native";
 import { observer } from "mobx-react";
+import authStore from "../stores/authStore";
 
 const TripDetail = ({ route, navigation }) => {
   const { trip } = route.params;
@@ -25,16 +26,19 @@ const TripDetail = ({ route, navigation }) => {
             </Body>
           </Left>
         </CardItem>
-
-        <Button block dark onPress={() => navigation.replace("TripList")}>
-          <Text style={styles.textButton}>Explore Trips</Text>
-        </Button>
-        <Button block dark onPress={() => navigation.replace("TripList")}>
-          <Text style={styles.textButton}>My Trips</Text>
-        </Button>
-        <Button block dark onPress={() => navigation.replace("CreateTrip")}>
-          <Text style={styles.textButton}>Create New Trip</Text>
-        </Button>
+        {authStore.user.id === trip.userId ? (
+          <>
+            <Button block dark onPress={() => navigation.replace("TripList")}>
+              <Text style={styles.textButton}>Explore Trips</Text>
+            </Button>
+            <Button block dark onPress={() => navigation.replace("TripList")}>
+              <Text style={styles.textButton}>My Trips</Text>
+            </Button>
+            <Button block dark onPress={() => navigation.replace("CreateTrip")}>
+              <Text style={styles.textButton}>Create New Trip</Text>
+            </Button>
+          </>
+        ) : null}
       </Card>
     </Content>
   );

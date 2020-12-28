@@ -1,4 +1,4 @@
-import { Card, CardItem, Content, Icon } from "native-base";
+import { Card, CardItem, Content, Icon, List } from "native-base";
 import styled from "styled-components/native";
 
 export const HomeBackground = styled.ImageBackground`
@@ -165,6 +165,6 @@ export const TripItemImage = styled.Image`
   height: 200px;
   width: 200px;
 `;
-export const TripList = styled(Content)`
+export const TripListBackground = styled(List)`
   background-color: pink;
 `;
