@@ -6,6 +6,10 @@ import { AuthOther } from "../styles";
 import authStore from "../stores/authStore";
 import { observer } from "mobx-react";
 
+/**
+ * Same comments from Signin component
+ */
+
 const Signup = () => {
   const [user, setUser] = useState({
     username: "",

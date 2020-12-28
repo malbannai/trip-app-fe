@@ -7,6 +7,7 @@ class AuthStore {
   users = [];
   user = null;
   loading = true;
+
   constructor() {
     makeAutoObservable(this);
   }
@@ -24,6 +25,8 @@ class AuthStore {
     } catch (error) {
       console.log("AuthStore -> signup -> error", error);
     }
+
+    // this console log also
     console.log("Signup", userData);
   };
 
@@ -34,7 +37,6 @@ class AuthStore {
     } catch (error) {
       console.log("AuthStore -> signin -> error", error);
     }
-    console.log("Signin", userData);
   };
 
   checkForToken = async () => {

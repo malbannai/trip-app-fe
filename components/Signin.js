@@ -14,13 +14,13 @@ const Signin = ({ navigation }) => {
 
   const handleSubmit = async () => {
     await authStore.signin(user);
-    if (authStore.user) navigation.navigate("Profile"); //change to profile
-    //if (authStore.user) navigation.navigate("CreateTrip");
+    if (authStore.user) navigation.navigate("Profile"); //change to profil
   };
   return (
     <Container>
       <Text style={styles.textTitle}>Signin</Text>
 
+      {/* You're not using this <Form>, if it doesn't change styling, remove it. */}
       <Form>
         <Item floatingLabel>
           <Label>Username</Label>
@@ -52,6 +52,7 @@ const Signin = ({ navigation }) => {
 
 export default observer(Signin);
 
+// Move your styles to styled components.
 const styles = StyleSheet.create({
   textButton: {
     color: "pink",
