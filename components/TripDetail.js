@@ -10,7 +10,7 @@ const TripDetail = ({ route, navigation }) => {
   const { trip } = route.params;
   return (
     <Content>
-      <Card style={{ flex: 0 }}>
+      <Card>
         <CardItem>
           <Image
             source={{ uri: trip.image.replace("localhost", "192.168.0.153") }}
