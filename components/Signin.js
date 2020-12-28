@@ -1,18 +1,20 @@
+import { Button, Container, Form, Input, Item, Label } from "native-base";
 import React, { useState } from "react";
-import { Text, StyleSheet } from "react-native";
-import { Container, Form, Item, Input, Label, Button } from "native-base";
-import authStore from "../stores/authStore";
+import { StyleSheet, Text } from "react-native";
 
-const Signin = () => {
+import { AuthOther } from "../styles";
+import authStore from "../stores/authStore";
+import { observer } from "mobx-react";
+
+const Signin = ({ navigation }) => {
   const [user, setUser] = useState({
     username: "",
     password: "",
   });
 
-  const handleSubmit = () => {
-    // Remove this commented line
-    // await authStore.signup(user);
-    authStore.signin(user);
+  const handleSubmit = async () => {
+    await authStore.signin(user);
+    if (authStore.user) navigation.navigate("Profile"); //change to profil
   };
   return (
     <Container>
@@ -22,24 +24,33 @@ const Signin = () => {
       <Form>
         <Item floatingLabel>
           <Label>Username</Label>
-          <Input onChangeText={(username) => setUser({ ...user, username })} />
+          <Input
+            onChangeText={(username) => setUser({ ...user, username })}
+            autoCapitalize="none"
+            required
+          />
         </Item>
         <Item floatingLabel last>
           <Label>Password</Label>
           <Input
             secureTextEntry={true}
             onChangeText={(password) => setUser({ ...user, password })}
+            autoCapitalize="none"
+            required
           />
         </Item>
         <Button block dark onPress={handleSubmit}>
           <Text style={styles.textButton}>Signin</Text>
         </Button>
       </Form>
+      <AuthOther onPress={() => navigation.replace("Signup")}>
+        Click here to register!
+      </AuthOther>
     </Container>
   );
 };
 
-export default Signin;
+export default observer(Signin);
 
 // Move your styles to styled components.
 const styles = StyleSheet.create({

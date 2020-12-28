@@ -1,19 +1,25 @@
-import React from "react";
-import { StyleSheet, Text, View } from "react-native";
-
-//navigation
+import CreateTrip from "./CreateTrip";
+import Home from "./Home";
 import { NavigationContainer } from "@react-navigation/native";
-import { createStackNavigator } from "@react-navigation/stack";
-const { Navigator, Screen } = createStackNavigator();
-
-//components
-import Signup from "./Signup";
+import Profile from "./Profile";
+import React from "react";
 import Signin from "./Signin";
+import Signup from "./Signup";
+import { StyleSheet } from "react-native";
+import TripDetail from "./TripDetail";
+import TripUpdate from "./TripUpdate";
+import TripList from "./TripList";
+
+import { createStackNavigator } from "@react-navigation/stack";
+import { observer } from "mobx-react";
+
+const { Navigator, Screen } = createStackNavigator();
 
 const Router = () => {
   return (
     <NavigationContainer>
-      <Navigator initialRouteName="Signin">
+      <Navigator initialRouteName="Home">
+        <Screen name="Home" component={Home} options={{ headerShown: false }} />
         <Screen
           name="Signup"
           component={Signup}
@@ -24,11 +30,36 @@ const Router = () => {
           component={Signin}
           options={{ headerShown: false }}
         />
+        <Screen
+          name="TripList"
+          component={TripList}
+          options={{ headerShown: true }}
+        />
+        <Screen
+          name="CreateTrip"
+          component={CreateTrip}
+          options={{ headerShown: false }}
+        />
+        <Screen
+          name="TripDetail"
+          component={TripDetail}
+          options={{ headerShown: false }}
+        />
+        <Screen
+          name="TripUpdate"
+          component={TripUpdate}
+          options={{ headerShown: false }}
+        />
+        <Screen
+          name="Profile"
+          component={Profile}
+          options={{ headerShown: false }}
+        />
       </Navigator>
     </NavigationContainer>
   );
 };
 
-export default Router;
+export default observer(Router);
 
 const styles = StyleSheet.create({});
