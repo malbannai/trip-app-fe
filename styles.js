@@ -1,4 +1,4 @@
-import { Icon } from "native-base";
+import { Card, CardItem, Content, Icon, List } from "native-base";
 import styled from "styled-components/native";
 
 export const HomeBackground = styled.ImageBackground`
@@ -11,11 +11,12 @@ export const TopStyling = styled.View`
   height: 40%;
   align-items: center;
   justify-content: center;
+  color: white;
 `;
 
 export const Title = styled.Text`
-  color: #000;
-  font-size: 38px;
+  color: white;
+  font-size: 45;
   text-align: center;
 `;
 export const OverLayContainer = styled.View`
@@ -29,9 +30,9 @@ export const BottomStyling = styled.View`
 `;
 
 export const ButtonStyled = styled.Text`
-
-  font-size: 25px;
-  color: #fff;
+  font-size: 20px;
+  color: white;
+  font-weight: bold;
 `;
 export const BakeryItemStyled = styled.Text`
   color: #000;
@@ -72,9 +73,7 @@ export const CartTextStyled = styled.Text`
   color: ${(props) => props.theme.backgroundColor};
   font-size: 20px;
 `;
-export const TrashIcon = styled(Icon)`
-  color: ${(props) => props.theme.red};
-`;
+
 export const CheckoutButton = styled.TouchableOpacity`
   align-self: stretch;
   align-items: center;
@@ -135,4 +134,67 @@ EyeButtonStyled;
 export const EyeButtonStyled = styled(Icon)`
   color: gray;
   margin-right: 10px;
+`;
+
+export const TripTitle = styled.Text`
+  color: pink;
+  text-align: center;
+  font-weight: bold;
+  font-size: 20px;
+`;
+
+export const TripCardItem = styled(CardItem)`
+  background: black;
+`;
+export const TrashIcon = styled(Icon)`
+  color: pink;
+`;
+export const RefreshIcon = styled(Icon)`
+  color: pink;
+`;
+
+export const IconWrapper = styled(CardItem)`
+  background-color: black;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+`;
+
+export const TripItemImage = styled.Image`
+  height: 200px;
+  width: 200px;
+`;
+export const TripListBackground = styled(List)`
+  background-color: pink;
+`;
+
+export const DetailsWrapper = styled(Card)`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+  flex-wrap: wrap;
+  width: 100%;
+  padding-top: 10px;
+`;
+
+export const TripOwner = styled.Text`
+  color: pink;
+  text-align: center;
+  font-weight: bold;
+  font-size: 10px;
+`;
+
+export const TripDes = styled.Text`
+  color: pink;
+  text-align: center;
+  font-weight: bold;
+  font-size: 20px;
+`;
+
+export const UserIcon = styled(Icon)`
+  color: pink;
+  margin-left: auto;
 `;

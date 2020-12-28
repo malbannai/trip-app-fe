@@ -5,7 +5,6 @@ import { StyleSheet, Text } from "react-native";
 import { AuthOther } from "../styles";
 import authStore from "../stores/authStore";
 import { observer } from "mobx-react";
-
 const Signup = () => {
   const [user, setUser] = useState({
     username: "",
@@ -17,7 +16,7 @@ const Signup = () => {
 
   const handleSubmit = async () => {
     await authStore.signup(user);
-    if (authStore.user) navigation.navigate("TripList"); // change to profile
+    if (authStore.user) navigation.navigate("Profile");
   };
   return (
     <Container>
@@ -62,9 +61,9 @@ const Signup = () => {
           <Text style={styles.textButton}>Signup</Text>
         </Button>
       </Form>
-      {/* <AuthOther onPress={() => navigation.replace("Signin")}>
+      <AuthOther onPress={() => navigation.replace("Signin")}>
         Click here to sign in!
-      </AuthOther> */}
+      </AuthOther>
     </Container>
   );
 };

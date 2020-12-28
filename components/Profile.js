@@ -1,24 +1,27 @@
+
 import React from "react";
-import { Spinner, Image } from "react-native";
+import { Image, Spinner, StyleSheet, Text } from "react-native";
 import { observer } from "mobx-react";
 import profileStore from "../stores/profileStore";
 import authStore from "../stores/authStore";
 import tripStore from "../stores/tripStore";
 import usersStore from "../stores/usersStore";
 import ip from "../stores/ipaddress";
+import TripItem from "./TripItem";
+import TripTitle from "./TripTitle";
 import {
-  Container,
-  Header,
-  Content,
+  Body,
+  Button,
   Card,
   CardItem,
-  Text,
-  Body,
+  Container,
+  Content,
+  Header,
   Left,
-  Right,
   List,
 } from "native-base";
-import TripTitle from "./TripTitle";
+
+
 
 const Profile = ({ route, navigation }) => {
   if (profileStore.loading || tripStore.loading || usersStore.loading)
@@ -32,7 +35,9 @@ const Profile = ({ route, navigation }) => {
   const mytripList = tripStore.trips
     .filter((trip) => trip.userId === profileOwner.id)
     .map((trip) => (
-      <TripTitle trip={trip} key={trip.id} navigation={navigation} />
+
+    //  <TripTitle trip={trip} key={trip.id} navigation={navigation} />
+      <TripItem trip={trip} key={trip.id} navigation={navigation} />
     ));
 
   return (
@@ -45,19 +50,19 @@ const Profile = ({ route, navigation }) => {
           </CardItem>
           <Left>
             <CardItem cardBody>
-              <Image
+              {/* <Image
                 source={{
                   uri: userProfile.image.replace("localhost", ip),
                 }}
                 style={{ height: 100, width: 100, flex: 0 }}
-              />
+              /> */}
             </CardItem>
           </Left>
 
           <CardItem bordered>
-            <Body>
-              <Text>{userProfile.bio}</Text>
-            </Body>
+            {/* <Body>
+              <Text>{profileOwner.bio}</Text>
+            </Body> */}
           </CardItem>
           <CardItem bordered>
             <Body>
@@ -80,8 +85,36 @@ const Profile = ({ route, navigation }) => {
           </CardItem>
         </Card>
       </Content>
+      <Content>
+        <Button block dark onPress={() => navigation.replace("TripList")}>
+          <Text style={styles.textButton}>Explore Trips</Text>
+        </Button>
+        <Button block dark onPress={() => navigation.replace("TripList")}>
+          <Text style={styles.textButton}>My Trips</Text>
+        </Button>
+        <Button block dark onPress={() => navigation.replace("CreateTrip")}>
+          <Text style={styles.textButton}>Create New Trip</Text>
+        </Button>
+        <Button block dark onPress={() => authStore.signout()}>
+          <Text style={styles.textButton}>Signout</Text>
+        </Button>
+      </Content>
     </Container>
   );
 };
 
 export default observer(Profile);
+
+const styles = StyleSheet.create({
+  textButton: {
+    color: "pink",
+    textAlign: "center",
+  },
+  textTitle: {
+    color: "black",
+    textAlign: "center",
+    marginTop: 100,
+  },
+});
+
+// change button triplist to go to user's trip list

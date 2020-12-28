@@ -7,6 +7,7 @@ class AuthStore {
   users = [];
   user = null;
   loading = true;
+
   constructor() {
     makeAutoObservable(this);
   }
@@ -21,22 +22,18 @@ class AuthStore {
     try {
       const res = await instance.post("/signup", userData);
       this.setUser(res.data.token);
-      console.log("AuthStore -> signup -> res.data.token", res.data.token);
     } catch (error) {
       console.log("AuthStore -> signup -> error", error);
     }
-    console.log("Signup", userData);
   };
 
   signin = async (userData) => {
     try {
       const res = await instance.post("/signin", userData);
       this.setUser(res.data.token);
-      console.log("AuthStore -> signin -> res.data.token", res.data.token);
     } catch (error) {
       console.log("AuthStore -> signin -> error", error);
     }
-    console.log("Signin", userData);
   };
 
   checkForToken = async () => {
@@ -49,6 +46,11 @@ class AuthStore {
         this.signout();
       }
     }
+  };
+
+  signout = () => {
+    delete instance.defaults.headers.common.Authorization;
+    this.user = null;
   };
 }
 
