@@ -12,7 +12,9 @@ const ActionBarImage = () => {
         <UserIcon
           name="person"
           type="Ionicons"
-          onPress={() => navigation.navigate("Profile", { profileOwner: user })}
+          onPress={() =>
+            navigation.navigate("Profile", { profileOwner: authStore.user })
+          }
         />
       ) : (
         navigation.navigate("Signin")
