@@ -14,14 +14,16 @@ const CreateTrip = ({ trip, navigation }) => {
     image: "",
   });
 
+
   const handleSubmit = async () => {
-    creator.image = image;
+     setCreator({ ...creator, image });
     await tripStore.createTrip(creator);
     navigation.navigate("TripDetail", { trip: newTrip });
+     console.log(creator);
+
   };
 
   //image-picker start
-  const [image, setImage] = useState(null);
 
   useEffect(() => {
     (async () => {

@@ -1,3 +1,14 @@
+
+import React from "react";
+import { Image, Spinner, StyleSheet, Text } from "react-native";
+import { observer } from "mobx-react";
+import profileStore from "../stores/profileStore";
+import authStore from "../stores/authStore";
+import tripStore from "../stores/tripStore";
+import usersStore from "../stores/usersStore";
+import ip from "../stores/ipaddress";
+import TripItem from "./TripItem";
+import TripTitle from "./TripTitle";
 import {
   Body,
   Button,
@@ -9,27 +20,23 @@ import {
   Left,
   List,
 } from "native-base";
-import { Image, Spinner, StyleSheet, Text } from "react-native";
 
-import React from "react";
-import authStore from "../stores/authStore";
-import { observer } from "mobx-react";
-import profileStore from "../stores/profileStore";
-import tripStore from "../stores/tripStore";
-import usersStore from "../stores/usersStore";
-import TripItem from "./TripItem";
 
-const Profile = ({ navigation }) => {
+
+const Profile = ({ route, navigation }) => {
   if (profileStore.loading || tripStore.loading || usersStore.loading)
     return <Spinner />;
-
-  const profileOwner = usersStore.users.find(
-    (user) => user.id === authStore.user.id
-  );
+  const { profileOwner } = route.params;
+  console.log(profileOwner);
+  // const profileOwner = usersStore.users.find(
+  //   (user) => user.id === authStore.user.id
+  // );
   const userProfile = profileStore.getprofileByuserId(profileOwner.id);
   const mytripList = tripStore.trips
     .filter((trip) => trip.userId === profileOwner.id)
     .map((trip) => (
+
+    //  <TripTitle trip={trip} key={trip.id} navigation={navigation} />
       <TripItem trip={trip} key={trip.id} navigation={navigation} />
     ));
 
@@ -45,7 +52,7 @@ const Profile = ({ navigation }) => {
             <CardItem cardBody>
               {/* <Image
                 source={{
-                  uri: userProfile.image.replace("localhost", "192.168.0.153"),
+                  uri: userProfile.image.replace("localhost", ip),
                 }}
                 style={{ height: 100, width: 100, flex: 0 }}
               /> */}
@@ -68,7 +75,7 @@ const Profile = ({ navigation }) => {
           <CardItem bordered>
             <Body>
               <Text>My trips are: </Text>
-              <List>{mytripList}</List>
+              <Text>{mytripList}</Text>
             </Body>
           </CardItem>
 

@@ -1,5 +1,6 @@
 import { Button, Content, Text } from "native-base";
 import React from "react";
+import ip from "../stores/ipaddress";
 import { StyleSheet } from "react-native";
 import { observer } from "mobx-react";
 import authStore from "../stores/authStore";
@@ -14,6 +15,7 @@ import {
 
 const TripDetail = ({ route, navigation }) => {
   const { trip } = route.params;
+  console.log("details trip>>", trip);
   return (
     <Content>
       <DetailsWrapper>
@@ -22,7 +24,7 @@ const TripDetail = ({ route, navigation }) => {
         </TripCardItem>
         <TripCardItem>
           <TripItemImage
-            source={{ uri: trip.image.replace("localhost", "192.168.0.153") }}
+            source={{ uri: trip.image.replace("localhost",ip) }}
           />
         </TripCardItem>
         <TripCardItem>
