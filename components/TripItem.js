@@ -1,56 +1,50 @@
-import {
-  Body,
-  Card,
-  CardItem,
-  Icon,
-  Left,
-  ListItem,
-  Right,
-  Text,
-  Thumbnail,
-} from "native-base";
+import { Body, Card, CardItem, Icon, Left } from "native-base";
 
 import { Image, TouchableOpacity, Alert } from "react-native";
 import React from "react";
 import { observer } from "mobx-react";
 import authStore from "../stores/authStore";
 import tripStore from "../stores/tripStore";
+import {
+  TripTitle,
+  TripCardItem,
+  IconWrapper,
+  RefreshIcon,
+  TrashIcon,
+  TripItemImage,
+} from "../styles";
 
 const TripItem = ({ trip, navigation }) => {
   return (
-    <>
-      <TouchableOpacity
-        onPress={() => navigation.navigate("TripDetail", { trip: trip })}
-      >
-        <Card>
-          <CardItem>
-            <Left>
-              <Body>
-                <Text>{trip.title}</Text>
-                <Text>{trip.description}</Text>
-              </Body>
-            </Left>
-          </CardItem>
-          <CardItem cardBody>
-            <Image
-              source={{ uri: trip.image.replace("localhost", "192.168.8.100") }}
-              style={{ height: 200, width: null, flex: 1 }}
+    <TouchableOpacity
+      onPress={() => navigation.navigate("TripDetail", { trip: trip })}
+    >
+      <Card>
+        <TripCardItem>
+          <Left>
+            <Body>
+              <TripTitle>{trip.title}</TripTitle>
+            </Body>
+          </Left>
+          {trip.image ? (
+            <TripItemImage
+              source={{
+                uri: trip.image.replace("localhost", "192.168.8.100"),
+              }}
             />
-          </CardItem>
-        </Card>
-      </TouchableOpacity>
-      <TouchableOpacity>
-        <CardItem>
+          ) : null}
+        </TripCardItem>
+        <IconWrapper>
           {authStore.user.id === trip.userId ? (
             <>
-              <Icon
+              <RefreshIcon
                 active
                 name="refresh"
                 onPress={() =>
                   navigation.navigate("TripUpdate", { trip: trip })
                 }
               />
-              <Icon
+              <TrashIcon
                 name="trash"
                 type="Ionicons"
                 onPress={() => tripStore.removeTrip(trip.id)}
@@ -75,10 +69,9 @@ const TripItem = ({ trip, navigation }) => {
                 ],
                 { cancelable: false }
               )}
-        </CardItem>
-      </TouchableOpacity>
-    </>
-
+        </IconWrapper>
+      </Card>
+    </TouchableOpacity>
   );
 };
 
