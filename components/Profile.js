@@ -18,6 +18,7 @@ import { observer } from "mobx-react";
 import profileStore from "../stores/profileStore";
 import tripStore from "../stores/tripStore";
 import usersStore from "../stores/usersStore";
+import TripItem from "./TripItem";
 
 const Profile = ({ navigation }) => {
   if (profileStore.loading || tripStore.loading || usersStore.loading)
@@ -29,7 +30,9 @@ const Profile = ({ navigation }) => {
   const userProfile = profileStore.getprofileByuserId(profileOwner.id);
   const mytripList = tripStore.trips
     .filter((trip) => trip.userId === profileOwner.id)
-    .map((trip) => <Text>{trip.title}</Text>);
+    .map((trip) => (
+      <TripItem trip={trip} key={trip.id} navigation={navigation} />
+    ));
 
   return (
     <Container>
