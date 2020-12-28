@@ -45,11 +45,14 @@ class AuthStore {
       const decodedToken = decode(token);
       if (Date.now() < decodedToken.exp) {
         this.setUser(token);
+      } else {
+        this.signout();
       }
-      // else {
-      //   this.signout();
-      // }
     }
+  };
+
+  signout = () => {
+    this.user = null;
   };
 }
 
