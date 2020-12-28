@@ -14,13 +14,11 @@ const CreateTrip = ({ trip, navigation }) => {
     image: "",
   });
 
-
   const handleSubmit = async () => {
-     setCreator({ ...creator, image });
+    setCreator({ ...creator, image });
     await tripStore.createTrip(creator);
     navigation.navigate("TripDetail", { trip: newTrip });
-     console.log(creator);
-
+    console.log(creator);
   };
 
   //image-picker start

@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Image, Spinner, StyleSheet, Text } from "react-native";
 import { observer } from "mobx-react";
@@ -21,8 +20,6 @@ import {
   List,
 } from "native-base";
 
-
-
 const Profile = ({ route, navigation }) => {
   if (profileStore.loading || tripStore.loading || usersStore.loading)
     return <Spinner />;
@@ -35,8 +32,7 @@ const Profile = ({ route, navigation }) => {
   const mytripList = tripStore.trips
     .filter((trip) => trip.userId === profileOwner.id)
     .map((trip) => (
-
-    //  <TripTitle trip={trip} key={trip.id} navigation={navigation} />
+      //  <TripTitle trip={trip} key={trip.id} navigation={navigation} />
       <TripItem trip={trip} key={trip.id} navigation={navigation} />
     ));
 
@@ -88,9 +84,6 @@ const Profile = ({ route, navigation }) => {
       <Content>
         <Button block dark onPress={() => navigation.replace("TripList")}>
           <Text style={styles.textButton}>Explore Trips</Text>
-        </Button>
-        <Button block dark onPress={() => navigation.replace("TripList")}>
-          <Text style={styles.textButton}>My Trips</Text>
         </Button>
         <Button block dark onPress={() => navigation.replace("CreateTrip")}>
           <Text style={styles.textButton}>Create New Trip</Text>
