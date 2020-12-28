@@ -193,3 +193,8 @@ export const TripDes = styled.Text`
   font-weight: bold;
   font-size: 20px;
 `;
+
+export const UserIcon = styled(Icon)`
+  color: pink;
+  margin-left: auto;
+`;

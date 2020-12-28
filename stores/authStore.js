@@ -25,9 +25,6 @@ class AuthStore {
     } catch (error) {
       console.log("AuthStore -> signup -> error", error);
     }
-
-    // this console log also
-    console.log("Signup", userData);
   };
 
   signin = async (userData) => {
@@ -52,6 +49,7 @@ class AuthStore {
   };
 
   signout = () => {
+    delete instance.defaults.headers.common.Authorization;
     this.user = null;
   };
 }
