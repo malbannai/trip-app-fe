@@ -8,7 +8,6 @@ import {
   Header,
   Left,
   List,
-  Right,
 } from "native-base";
 import { Image, Spinner, StyleSheet, Text } from "react-native";
 

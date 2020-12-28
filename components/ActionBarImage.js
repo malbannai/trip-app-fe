@@ -3,6 +3,7 @@ import { Text } from "react-native";
 import { Icon } from "native-base";
 import authStore from "../stores/authStore";
 import { useNavigation } from "@react-navigation/native";
+import { observer } from "mobx-react";
 
 const ActionBarImage = () => {
   const navigation = useNavigation();
@@ -22,4 +23,4 @@ const ActionBarImage = () => {
   );
 };
 
-export default ActionBarImage;
+export default observer(ActionBarImage);

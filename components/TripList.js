@@ -1,11 +1,8 @@
 import { Icon, List, Spinner, Text, View, Content } from "native-base";
-
-import Profile from "./Profile";
 import React from "react";
 import TripItem from "./TripItem";
 import { observer } from "mobx-react";
 import tripStore from "../stores/tripStore";
-import {} from "../styles";
 import authStore from "../stores/authStore";
 
 const TripList = ({ navigation }) => {

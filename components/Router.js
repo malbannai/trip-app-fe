@@ -5,7 +5,6 @@ import Profile from "./Profile";
 import React from "react";
 import Signin from "./Signin";
 import Signup from "./Signup";
-import { StyleSheet } from "react-native";
 import TripDetail from "./TripDetail";
 import TripUpdate from "./TripUpdate";
 import TripList from "./TripList";
@@ -66,5 +65,3 @@ const Router = () => {
 };
 
 export default observer(Router);
-
-const styles = StyleSheet.create({});

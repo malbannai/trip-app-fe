@@ -168,3 +168,28 @@ export const TripItemImage = styled.Image`
 export const TripListBackground = styled(List)`
   background-color: pink;
 `;
+
+export const DetailsWrapper = styled(Card)`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+  flex-wrap: wrap;
+  width: 100%;
+  padding-top: 10px;
+`;
+
+export const TripOwner = styled.Text`
+  color: pink;
+  text-align: center;
+  font-weight: bold;
+  font-size: 10px;
+`;
+
+export const TripDes = styled.Text`
+  color: pink;
+  text-align: center;
+  font-weight: bold;
+  font-size: 20px;
+`;

@@ -52,7 +52,6 @@ const Signin = ({ navigation }) => {
 
 export default observer(Signin);
 
-// Move your styles to styled components.
 const styles = StyleSheet.create({
   textButton: {
     color: "pink",
