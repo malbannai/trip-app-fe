@@ -27,7 +27,7 @@ const Home = ({ navigation }) => {
               navigation.navigate("Signin");
             }}
           >
-            Click here to skip
+            Click here to start
           </ButtonStyled>
         </BottomStyling>
       </OverLayContainer>

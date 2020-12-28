@@ -1,4 +1,4 @@
-import { Icon, List, Spinner, Text, View } from "native-base";
+import { Icon, List, Spinner, Text, View, Content } from "native-base";
 
 import Profile from "./Profile";
 import React from "react";
@@ -14,7 +14,7 @@ const TripList = ({ navigation }) => {
   ));
 
   return (
-    <View>
+    <>
       {authStore.user ? (
         <Icon
           name="person"
@@ -25,11 +25,11 @@ const TripList = ({ navigation }) => {
       ) : (
         <Text onPress={() => navigation.navigate("Signin")}>Signin</Text>
       )}
-
-      <List>{tripList}</List>
-    </View>
+      <Content>
+        <List>{tripList}</List>
+      </Content>
+    </>
   );
 };
 
 export default observer(TripList);
-

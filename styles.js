@@ -1,4 +1,4 @@
-import { Icon } from "native-base";
+import { Card, CardItem, Icon } from "native-base";
 import styled from "styled-components/native";
 
 export const HomeBackground = styled.ImageBackground`
@@ -15,7 +15,6 @@ export const TopStyling = styled.View`
 `;
 
 export const Title = styled.Text`
-
   color: white;
   font-size: 45;
   text-align: center;
@@ -31,11 +30,9 @@ export const BottomStyling = styled.View`
 `;
 
 export const ButtonStyled = styled.Text`
-
   font-size: 20px;
   color: white;
   font-weight: bold;
-
 `;
 export const BakeryItemStyled = styled.Text`
   color: #000;
@@ -76,9 +73,7 @@ export const CartTextStyled = styled.Text`
   color: ${(props) => props.theme.backgroundColor};
   font-size: 20px;
 `;
-export const TrashIcon = styled(Icon)`
-  color: ${(props) => props.theme.red};
-`;
+
 export const CheckoutButton = styled.TouchableOpacity`
   align-self: stretch;
   align-items: center;
@@ -139,4 +134,34 @@ EyeButtonStyled;
 export const EyeButtonStyled = styled(Icon)`
   color: gray;
   margin-right: 10px;
+`;
+
+export const TripTitle = styled.Text`
+  color: pink;
+  text-align: center;
+  font-weight: bold;
+  font-size: 20px;
+`;
+
+export const TripCardItem = styled(CardItem)`
+  background: black;
+`;
+export const TrashIcon = styled(Icon)`
+  color: pink;
+`;
+export const RefreshIcon = styled(Icon)`
+  color: pink;
+`;
+
+export const IconWrapper = styled(CardItem)`
+  background-color: black;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+`;
+
+export const TripItemImage = styled.Image`
+  height: 200px;
+  width: 200px;
 `;
