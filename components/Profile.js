@@ -88,6 +88,9 @@ const Profile = ({ navigation }) => {
         <Button block dark onPress={() => navigation.replace("CreateTrip")}>
           <Text style={styles.textButton}>Create New Trip</Text>
         </Button>
+        <Button block dark onPress={() => authStore.signout()}>
+          <Text style={styles.textButton}>Signout</Text>
+        </Button>
       </Content>
     </Container>
   );

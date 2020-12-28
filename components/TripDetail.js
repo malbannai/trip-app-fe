@@ -15,6 +15,7 @@ const TripDetail = ({ route, navigation }) => {
   const { trip } = route.params;
   return (
     <Content>
+
       <DetailsWrapper>
         <TripCardItem>
           <TripTitle>{trip.title}</TripTitle>
