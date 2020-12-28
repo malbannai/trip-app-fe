@@ -1,10 +1,9 @@
 import { Body, Card, Left } from "native-base";
-import { TouchableOpacity, Alert ,Image} from "react-native";
+import { TouchableOpacity, Alert } from "react-native";
 import React from "react";
 import { observer } from "mobx-react";
 import authStore from "../stores/authStore";
 import tripStore from "../stores/tripStore";
-
 import usersStore from "../stores/usersStore";
 import ip from "../stores/ipaddress";
 import {
@@ -25,57 +24,14 @@ const TripItem = ({ trip, navigation }) => {
         <TripCardItem>
           <Left>
             <Body>
-// showOnwerOfTrip
-//               <Text
-//                 note
-//                 onPress={() =>
-//                   navigation.navigate("Profile", { profileOwner: owner })
-//                 }
-//               >
-//                 By {owner.username}
-//               </Text>
-//             </Body>
-//           </Left>
-//         </CardItem>
-//         <CardItem cardBody>
-//           <Image
-//             source={{ uri: trip.image.replace("localhost", ip) }}
-//             style={{ height: 200, width: null, flex: 1 }}
-//           />
-//         </CardItem>
-//         <CardItem>
-//           {/* <Left>
-//           <Button transparent>
-//             <Icon active name="thumbs-up" />
-//             <Text>12 Likes</Text>
-//           </Button>
-//         </Left>
-//         <Body>
-//           <Button transparent>
-//             <Icon active name="chatbubbles" />
-//             <Text>4 Comments</Text>
-//           </Button>
-//         </Body>
-//         <Right>
-//           <Text>11h ago</Text>
-//         </Right> */}
-//         </CardItem>
-//         <CardItem>
-//           <Right>
-//             <Icon
-//               name="trash"
-//               type="Ionicons"
-//               onPress={() => tripStore.removeTrip(trip.id)}
-///
               <TripTitle>{trip.title}</TripTitle>
             </Body>
           </Left>
           {trip.image ? (
             <TripItemImage
               source={{
-                uri: trip.image.replace("localhost", "192.168.8.100"),
+                uri: trip.image.replace("localhost", ip),
               }}
-// main
             />
           ) : null}
         </TripCardItem>
