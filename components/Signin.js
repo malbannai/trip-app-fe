@@ -19,8 +19,6 @@ const Signin = ({ navigation }) => {
   return (
     <Container>
       <Text style={styles.textTitle}>Signin</Text>
-
-      {/* You're not using this <Form>, if it doesn't change styling, remove it. */}
       <Form>
         <Item floatingLabel>
           <Label>Username</Label>

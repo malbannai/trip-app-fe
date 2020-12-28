@@ -1,4 +1,4 @@
-import { Body, Card, CardItem, Icon, Left } from "native-base";
+import { Body, Card, Left } from "native-base";
 
 import { TouchableOpacity, Alert } from "react-native";
 import React from "react";
