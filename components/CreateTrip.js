@@ -1,6 +1,6 @@
 import * as ImagePicker from "expo-image-picker";
 import { Button, Container, Form, Input, Item, Label } from "native-base";
-import { Image, Platform, View } from "react-native";
+import { Image, Platform } from "react-native";
 import React, { useState } from "react";
 import { StyleSheet, Text } from "react-native";
 import { ImageButtonStyled } from "../styles";
@@ -17,7 +17,7 @@ const CreateTrip = ({ trip, navigation }) => {
   const handleSubmit = async () => {
     creator.image = image;
     await tripStore.createTrip(creator);
-    navigation.navigate("TripDetail", { trip: newTrip });
+    navigation.navigate("TripDetail", { trip: creator });
   };
 
   //image-picker start
@@ -43,8 +43,6 @@ const CreateTrip = ({ trip, navigation }) => {
       aspect: [4, 3],
       quality: 1,
     });
-
-    console.log(result);
 
     if (!result.cancelled) {
       setImage(result.uri);
