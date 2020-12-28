@@ -78,6 +78,7 @@ const TripItem = ({ trip, navigation }) => {
         </CardItem>
       </TouchableOpacity>
     </>
+
   );
 };
 

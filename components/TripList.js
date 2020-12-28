@@ -32,3 +32,4 @@ const TripList = ({ navigation }) => {
 };
 
 export default observer(TripList);
+

@@ -4,7 +4,6 @@ import { Button, Container, Form, Input, Item, Label } from "native-base";
 import { Image, Platform, View } from "react-native";
 import React, { useState } from "react";
 import { StyleSheet, Text } from "react-native";
-
 import Constants from "expo-constants";
 import { ImageButtonStyled } from "../styles";
 import authStore from "../stores/authStore";
@@ -18,13 +17,10 @@ const CreateTrip = ({ trip, navigation }) => {
     image: "",
   });
 
+
   const handleSubmit = async () => {
-    // await authStore.signup(user);
     creator.image = image;
-
-    const newTrip = await tripStore.createTrip(creator);
-    console.log(newTrip);
-
+    await tripStore.createTrip(creator);
     navigation.navigate("TripDetail", { trip: newTrip });
   };
 
