@@ -10,11 +10,15 @@ import {
 import React from "react";
 import bgimage from "../onroad.jpg";
 import { observer } from "mobx-react";
-import tripStore from "../stores/tripStore";
-
+import authStore from "../stores/authStore";
 // Styling
 
 const Home = ({ navigation }) => {
+  const onClickNext = () => {
+    authStore.user
+      ? navigation.navigate("TripList")
+      : navigation.navigate("Signin");
+  };
   return (
     <HomeBackground source={bgimage}>
       <OverLayContainer>
@@ -22,11 +26,7 @@ const Home = ({ navigation }) => {
           <Title> Explore Trips</Title>
         </TopStyling>
         <BottomStyling>
-          <ButtonStyled
-            onPress={() => {
-              navigation.navigate("Signin");
-            }}
-          >
+          <ButtonStyled onPress={() => onClickNext()}>
             Click here to start
           </ButtonStyled>
         </BottomStyling>

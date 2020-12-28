@@ -9,31 +9,36 @@ import { StyleSheet } from "react-native";
 import TripDetail from "./TripDetail";
 import TripUpdate from "./TripUpdate";
 import TripList from "./TripList";
-
 import { createStackNavigator } from "@react-navigation/stack";
 import { observer } from "mobx-react";
+import ActionBarImage from "./ActionBarImage";
 
 const { Navigator, Screen } = createStackNavigator();
 
 const Router = () => {
   return (
     <NavigationContainer>
-      <Navigator initialRouteName="Home">
+      <Navigator
+        initialRouteName="Home"
+        screenOptions={{ headerLeft: () => <ActionBarImage /> }}
+      >
         <Screen name="Home" component={Home} options={{ headerShown: false }} />
         <Screen
           name="Signup"
           component={Signup}
-          options={{ headerShown: false }}
+          options={{ headerShown: true }}
         />
         <Screen
           name="Signin"
           component={Signin}
-          options={{ headerShown: false }}
+          options={{ headerShown: true }}
         />
         <Screen
           name="TripList"
           component={TripList}
-          options={{ headerShown: true }}
+          options={{
+            headerShown: true,
+          }}
         />
         <Screen
           name="CreateTrip"
@@ -43,7 +48,7 @@ const Router = () => {
         <Screen
           name="TripDetail"
           component={TripDetail}
-          options={{ headerShown: false }}
+          options={{ headerShown: true }}
         />
         <Screen
           name="TripUpdate"
@@ -53,7 +58,7 @@ const Router = () => {
         <Screen
           name="Profile"
           component={Profile}
-          options={{ headerShown: false }}
+          options={{ headerShown: true }}
         />
       </Navigator>
     </NavigationContainer>
