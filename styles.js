@@ -16,8 +16,9 @@ export const TopStyling = styled.View`
 
 export const Title = styled.Text`
   color: white;
-  font-size: 45;
+  font-size: 60px;
   text-align: center;
+  font-weight: bold;
 `;
 export const OverLayContainer = styled.View`
   flex: 1;
@@ -30,31 +31,31 @@ export const BottomStyling = styled.View`
 `;
 
 export const ButtonStyled = styled.Text`
-  font-size: 20px;
+  font-size: 30px;
   color: white;
   font-weight: bold;
 `;
 export const BakeryItemStyled = styled.Text`
   color: #000;
   font-size: 18px;
-  margin-top: 10;
-  margin-bottom: 10;
+  margin-top: 10px;
+  margin-bottom: 10px;
   margin-left: -30;
   width: 100%;
 `;
 
 export const BakeryDetailWrapper = styled.View`
-  margin-top: 50;
+  margin-top: 50px;
 `;
 
 export const BakeryDetailImage = styled.Image`
-  width: 150;
-  height: 150;
+  width: 150px;
+  height: 150px;
 `;
 
 export const BakeryDetailTitle = styled.Text`
   font-weight: bold;
-  font-size: 40;
+  font-size: 40px;
 `;
 export const TotalPrice = styled.Text`
   color: ${(props) => props.theme.pink};
@@ -64,10 +65,10 @@ export const TotalPrice = styled.Text`
 `;
 export const ImageButtonStyled = styled(Icon)`
   color: black;
-  font-size: 100;
-  margin-top: 50;
+  font-size: 100px;
+  margin-top: 50px;
   margin-left: 120px;
-  height: 100;
+  height: 100px;
 `;
 export const CartTextStyled = styled.Text`
   color: ${(props) => props.theme.backgroundColor};

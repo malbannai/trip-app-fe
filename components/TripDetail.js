@@ -24,7 +24,7 @@ const TripDetail = ({ route, navigation }) => {
         </TripCardItem>
         <TripCardItem>
           <TripItemImage
-            source={{ uri: trip.image.replace("localhost",ip) }}
+            source={{ uri: trip.image.replace("localhost", ip) }}
           />
         </TripCardItem>
         <TripCardItem>
