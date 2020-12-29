@@ -1,7 +1,8 @@
-import { observer } from "mobx-react";
 import { Button, Container, Form, Input, Item, Label } from "native-base";
 import React, { useState } from "react";
 import { StyleSheet, Text } from "react-native";
+
+import { observer } from "mobx-react";
 import tripStore from "../stores/tripStore";
 
 const TripUpdate = ({ navigation, route }) => {
@@ -35,10 +36,10 @@ const TripUpdate = ({ navigation, route }) => {
         </Item>
         <Item floatingLabel last>
           <Label>Image</Label>
-          <Input
+          {/* <Input
             onChangeText={(image) => setCreator({ ...creator, image })}
             defaultValue={creator.image}
-          />
+          /> */}
         </Item>
 
         <Button block dark onPress={handleSubmit}>

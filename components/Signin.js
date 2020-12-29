@@ -1,9 +1,9 @@
 import { Button, Container, Form, Input, Item, Label } from "native-base";
 import React, { useState } from "react";
 import { StyleSheet, Text } from "react-native";
+
 import { AuthOther } from "../styles";
 import authStore from "../stores/authStore";
-import usersStore from "../stores/usersStore";
 import { observer } from "mobx-react";
 
 const Signin = ({ navigation }) => {

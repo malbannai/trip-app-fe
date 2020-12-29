@@ -1,21 +1,26 @@
-import { Button, Content, Text } from "native-base";
-import React from "react";
-import ip from "../stores/ipaddress";
-import { StyleSheet } from "react-native";
-import { observer } from "mobx-react";
-import authStore from "../stores/authStore";
+import { Button, Content, Spinner, Text } from "native-base";
 import {
-  TripCardItem,
-  TripItemImage,
   DetailsWrapper,
-  TripTitle,
-  TripOwner,
+  TripCardItem,
   TripDes,
+  TripItemImage,
+  TripOwner,
+  TripTitle,
 } from "../styles";
 
-const TripDetail = ({ route, navigation }) => {
+import React from "react";
+import { StyleSheet } from "react-native";
+import authStore from "../stores/authStore";
+import ip from "../stores/ipaddress";
+import { observer } from "mobx-react";
+import profileStore from "../stores/profileStore";
+import tripStore from "../stores/tripStore";
+import usersStore from "../stores/usersStore";
+
+const TripDetail = ({ route, navigation, navigation: { goBack } }) => {
+  if (profileStore.loading || tripStore.loading || usersStore.loading)
+    return <Spinner />;
   const { trip } = route.params;
-  console.log("details trip>>", trip);
   return (
     <Content>
       <DetailsWrapper>
@@ -23,12 +28,12 @@ const TripDetail = ({ route, navigation }) => {
           <TripTitle>{trip.title}</TripTitle>
         </TripCardItem>
         <TripCardItem>
-          <TripItemImage
+          {/* <TripItemImage
             source={{ uri: trip.image.replace("localhost", ip) }}
-          />
+          /> */}
         </TripCardItem>
         <TripCardItem>
-          <TripOwner>Trip Owner: {trip.user.firstName}</TripOwner>
+          <TripOwner>Trip Owner: </TripOwner>
         </TripCardItem>
 
         <TripCardItem>
@@ -53,6 +58,12 @@ const TripDetail = ({ route, navigation }) => {
               </Button>
             </>
           ) : null}
+        </TripCardItem>
+        <TripCardItem>
+          <Button block dark onPress={() => navigation.replace("TripList")}>
+            <Text style={styles.textButton}>Go Back to Trip List</Text>
+          </Button>
+          {/* <Button onPress={() => goBack()} title="Go back" /> */}
         </TripCardItem>
       </DetailsWrapper>
     </Content>

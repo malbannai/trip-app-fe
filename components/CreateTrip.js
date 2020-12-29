@@ -1,13 +1,14 @@
 import * as ImagePicker from "expo-image-picker";
 import { Button, Container, Form, Input, Item, Label } from "native-base";
-import { Image, Platform, View } from "react-native";
+import { Image, Platform } from "react-native";
 import React, { useState } from "react";
 import { StyleSheet, Text } from "react-native";
 import { ImageButtonStyled } from "../styles";
 import tripStore from "../stores/tripStore";
 import { useEffect } from "react";
+import { observer } from "mobx-react";
 
-const CreateTrip = ({ trip, navigation }) => {
+const CreateTrip = ({ navigation }) => {
   const [creator, setCreator] = useState({
     title: "",
     description: "",
@@ -16,21 +17,26 @@ const CreateTrip = ({ trip, navigation }) => {
   const [image, setImage] = useState(null);
 
   const handleSubmit = async () => {
+
     // ImagePicker saves the taken photo to disk and returns a local URI to it
 
-    let localUri = image.uri;
+//     let localUri = image.uri;
+//     console.log("localuri>>>", image.uri );
+//     let filename = localUri.split("/").pop();
 
-    console.log("localuri>>>", image.uri );
-    let filename = localUri.split("/").pop();
-
-    // Infer the type of the image
-    let match = /\.(\w+)$/.exec(filename);
-    let type = match ? `image/${match[1]}` : `image`;
-    await tripStore.createTrip({
-      ...creator,
-      image: { uri: localUri, name: filename, type },
-    });
-    navigation.navigate("TripDetail", { trip: newTrip });
+//     // Infer the type of the image
+//     let match = /\.(\w+)$/.exec(filename);
+//     let type = match ? `image/${match[1]}` : `image`;
+//     await tripStore.createTrip({
+//       ...creator,
+//       image: { uri: localUri, name: filename, type },
+//     });
+//     navigation.navigate("TripDetail", { trip: newTrip });
+ 
+    setCreator(creator);
+    await tripStore.createTrip(creator);
+    navigation.navigate("TripDetail", { trip: creator });
+ 
   };
 
   //image-picker start
@@ -55,18 +61,15 @@ const CreateTrip = ({ trip, navigation }) => {
       aspect: [4, 3],
       quality: 1,
     });
-
-    console.log(result);
-
     if (!result.cancelled) {
-      setImage(result.uri);
+      setCreator({ ...creator, image: result.uri });
     }
   };
   //end of imagepicker
 
   return (
     <Container>
-      <Text style={styles.textTitle}>Create New Trip</Text>
+      <Text style={styles.textTitle}>Add a New Trip</Text>
       <Form>
         <Item floatingLabel>
           <Label>Title</Label>
@@ -85,9 +88,12 @@ const CreateTrip = ({ trip, navigation }) => {
           name="camera-plus-outline"
           onPress={pickImage}
         />
-        {image && (
-          <Image source={{ uri: image }} style={{ width: 200, height: 200 }} />
-        )}
+        {creator.image ? (
+          <Image
+            source={{ uri: creator.image }}
+            style={{ width: 200, height: 200 }}
+          />
+        ) : null}
 
         <Button block dark onPress={handleSubmit}>
           <Text style={styles.textButton}>Add your new trip!</Text>
@@ -97,7 +103,7 @@ const CreateTrip = ({ trip, navigation }) => {
   );
 };
 
-export default CreateTrip;
+export default observer(CreateTrip);
 
 const styles = StyleSheet.create({
   textButton: {
@@ -105,7 +111,9 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   textTitle: {
-    color: "black",
+    color: "pink",
+    fontWeight: "bold",
+    fontSize: 30,
     textAlign: "center",
     marginTop: 100,
   },
