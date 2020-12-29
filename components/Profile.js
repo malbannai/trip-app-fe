@@ -1,14 +1,3 @@
-import React from "react";
-import { Image, Spinner, StyleSheet, Text } from "react-native";
-import { observer } from "mobx-react";
-import profileStore from "../stores/profileStore";
-import authStore from "../stores/authStore";
-import tripStore from "../stores/tripStore";
-import usersStore from "../stores/usersStore";
-import ip from "../stores/ipaddress";
-import TripItem from "./TripItem";
-import TripTitle from "./TripTitle";
-import ProfileUpdate from "./ProfileUpdate";
 import {
   Body,
   Button,
@@ -20,6 +9,18 @@ import {
   Left,
   List,
 } from "native-base";
+import { Image, Spinner, StyleSheet, Text } from "react-native";
+
+import ProfileUpdate from "./ProfileUpdate";
+import React from "react";
+import TripItem from "./TripItem";
+import TripTitle from "./TripTitle";
+import authStore from "../stores/authStore";
+import ip from "../stores/ipaddress";
+import { observer } from "mobx-react";
+import profileStore from "../stores/profileStore";
+import tripStore from "../stores/tripStore";
+import usersStore from "../stores/usersStore";
 
 const Profile = ({ route, navigation }) => {
   if (profileStore.loading || tripStore.loading || usersStore.loading)
@@ -35,18 +36,16 @@ const Profile = ({ route, navigation }) => {
   const mytripList = tripStore.trips
     .filter((trip) => trip.userId === profileOwner.id)
     .map((trip) => (
- 
       <TripItem trip={trip} key={trip.id} navigation={navigation} />
     ));
 
   // <TripTitle trip={trip} key={trip.id} navigation={navigation} />
- 
 
   const handleSignout = () => {
     authStore.signout();
     navigation.navigate("TripList");
   };
- 
+
   return (
     <Container>
       <Header />
@@ -57,12 +56,12 @@ const Profile = ({ route, navigation }) => {
           </CardItem>
           <Left>
             <CardItem cardBody>
-              <Image
+              {/* <Image
                 source={{
                   uri: userProfile.image.replace("localhost", ip),
                 }}
                 style={{ height: 100, width: 100, flex: 0 }}
-              />
+              /> */}
             </CardItem>
           </Left>
 
@@ -110,13 +109,11 @@ const Profile = ({ route, navigation }) => {
           }
         >
           <Text style={styles.textButton}>Update Profile</Text>
-        </Button> 
-           <Button block dark onPress={() => navigation.navigate("CreateTrip")}>
-
+        </Button>
+        <Button block dark onPress={() => navigation.navigate("CreateTrip")}>
           <Text style={styles.textButton}>Create New Trip</Text>
         </Button>
         <Button block dark onPress={() => handleSignout()}>
- 
           <Text style={styles.textButton}>Signout</Text>
         </Button>
       </Content>

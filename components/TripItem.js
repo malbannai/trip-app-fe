@@ -1,23 +1,21 @@
+import { Alert, Image, TouchableOpacity } from "react-native";
 import { Body, Card, Left } from "native-base";
- 
-import { TouchableOpacity, Alert, Image } from "react-native";
- 
- 
- 
-import React from "react";
-import { observer } from "mobx-react";
-import authStore from "../stores/authStore";
-import tripStore from "../stores/tripStore";
-import usersStore from "../stores/usersStore";
-import ip from "../stores/ipaddress";
 import {
-  TripTitle,
-  TripCardItem,
   IconWrapper,
   RefreshIcon,
   TrashIcon,
+  TripCardItem,
   TripItemImage,
+  TripTitle,
 } from "../styles";
+
+import React from "react";
+import authStore from "../stores/authStore";
+import ip from "../stores/ipaddress";
+import { observer } from "mobx-react";
+import tripStore from "../stores/tripStore";
+import usersStore from "../stores/usersStore";
+
 const TripItem = ({ trip, navigation }) => {
   const owner = usersStore.users.find((user) => user.id === trip.userId);
   return (
@@ -31,13 +29,13 @@ const TripItem = ({ trip, navigation }) => {
               <TripTitle>{trip.title}</TripTitle>
             </Body>
           </Left>
-          {trip.image ? (
+          {/* {trip.image ? (
             <TripItemImage
               source={{
                 uri: trip.image.replace("localhost", ip),
               }}
             />
-          ) : null}
+          ) : null} */}
         </TripCardItem>
         <IconWrapper>
           {authStore.user.id === trip.userId ? (
