@@ -1,10 +1,11 @@
 import { Button, Container, Form, Input, Item, Label } from "native-base";
 import React, { useState } from "react";
 import { StyleSheet, Text } from "react-native";
+
 import { AuthOther } from "../styles";
 import authStore from "../stores/authStore";
-import usersStore from "../stores/usersStore";
 import { observer } from "mobx-react";
+import usersStore from "../stores/usersStore";
 
 const Signin = ({ navigation }) => {
   const [user, setUser] = useState({
@@ -15,6 +16,11 @@ const Signin = ({ navigation }) => {
   const handleSubmit = async () => {
     await authStore.signin(user);
     const owner = usersStore.users.find((u) => user.username === u.username);
+
+    console.log("from sgin in>>", owner);
+    // if (authStore.user) navigation.navigate("TripList"); //change to profile
+    //   if (authStore.user) navigation.navigate("CreateTrip");
+
     if (authStore.user.id !== 0)
       navigation.navigate("Profile", { profileOwner: owner }); //change to profil
   };
