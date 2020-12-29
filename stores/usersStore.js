@@ -17,6 +17,15 @@ class UsersStore {
       console.error("UserStore -> fetchUsers -> error", error);
     }
   };
+  updateUser = async (userdata) => {
+    try {
+      await instance.put(`/allusers`, userdata);
+      const user = this.users.find((u) => u.id === userdata.id);
+      for (const key in user) user[key] = userdata[key];
+    } catch (error) {
+      console.log("UserStore -> updateUser -> error", error);
+    }
+  };
 }
 
 const usersStore = new UsersStore();
