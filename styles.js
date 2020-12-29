@@ -16,9 +16,9 @@ export const TopStyling = styled.View`
 
 export const Title = styled.Text`
   color: white;
- 
+
   font-size: 60px;
- 
+
   text-align: center;
   font-weight: bold;
 `;
@@ -187,7 +187,9 @@ export const TripOwner = styled.Text`
   color: pink;
   text-align: center;
   font-weight: bold;
-  font-size: 10px;
+  font-size: 20px;
+  margin: 20px;
+  padding-top: 8px;
 `;
 
 export const TripDes = styled.Text`
