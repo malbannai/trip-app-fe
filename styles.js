@@ -16,7 +16,7 @@ export const TopStyling = styled.View`
 
 export const Title = styled.Text`
   color: white;
-  font-size: 45;
+  font-size: 45px;
   text-align: center;
 `;
 export const OverLayContainer = styled.View`
