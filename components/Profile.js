@@ -1,14 +1,3 @@
-import React from "react";
-import { Image, Spinner, StyleSheet, Text } from "react-native";
-import { observer } from "mobx-react";
-import profileStore from "../stores/profileStore";
-import authStore from "../stores/authStore";
-import tripStore from "../stores/tripStore";
-import usersStore from "../stores/usersStore";
-import ip from "../stores/ipaddress";
-import TripItem from "./TripItem";
-import TripTitle from "./TripTitle";
-import ProfileUpdate from "./ProfileUpdate";
 import {
   Body,
   Button,
@@ -20,6 +9,18 @@ import {
   Left,
   List,
 } from "native-base";
+import { Image, Spinner, StyleSheet, Text } from "react-native";
+
+import ProfileUpdate from "./ProfileUpdate";
+import React from "react";
+import TripItem from "./TripItem";
+import TripTitle from "./TripTitle";
+import authStore from "../stores/authStore";
+import ip from "../stores/ipaddress";
+import { observer } from "mobx-react";
+import profileStore from "../stores/profileStore";
+import tripStore from "../stores/tripStore";
+import usersStore from "../stores/usersStore";
 
 const Profile = ({ route, navigation }) => {
   if (profileStore.loading || tripStore.loading || usersStore.loading)
