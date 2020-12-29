@@ -2,10 +2,8 @@ import React from "react";
 import TripItem from "./TripItem";
 import { observer } from "mobx-react";
 import tripStore from "../stores/tripStore";
-import Profile from "./Profile";
-import { Icon, Content, List, Spinner, Text } from "native-base";
+import { Content, List, Spinner, Text } from "native-base";
 import authStore from "../stores/authStore";
-
 
 const TripList = ({ navigation }) => {
   if (tripStore.loading) return <Spinner />;
