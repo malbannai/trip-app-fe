@@ -13,12 +13,24 @@ const CreateTrip = ({ trip, navigation }) => {
     description: "",
     image: "",
   });
+  const [image, setImage] = useState(null);
 
   const handleSubmit = async () => {
-    setCreator({ ...creator, image });
-    await tripStore.createTrip(creator);
+    // ImagePicker saves the taken photo to disk and returns a local URI to it
+
+    let localUri = image.uri;
+
+    console.log("localuri>>>", image.uri );
+    let filename = localUri.split("/").pop();
+
+    // Infer the type of the image
+    let match = /\.(\w+)$/.exec(filename);
+    let type = match ? `image/${match[1]}` : `image`;
+    await tripStore.createTrip({
+      ...creator,
+      image: { uri: localUri, name: filename, type },
+    });
     navigation.navigate("TripDetail", { trip: newTrip });
-    console.log(creator);
   };
 
   //image-picker start

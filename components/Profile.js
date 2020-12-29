@@ -35,18 +35,16 @@ const Profile = ({ route, navigation }) => {
   const mytripList = tripStore.trips
     .filter((trip) => trip.userId === profileOwner.id)
     .map((trip) => (
- 
-      <TripItem trip={trip} key={trip.id} navigation={navigation} />
+      <TripTitle trip={trip} key={trip.id} navigation={navigation} />
     ));
 
-  // <TripTitle trip={trip} key={trip.id} navigation={navigation} />
- 
+  //  <TripItem trip={trip} key={trip.id} navigation={navigation} />
 
   const handleSignout = () => {
     authStore.signout();
     navigation.navigate("TripList");
   };
- 
+
   return (
     <Container>
       <Header />
@@ -110,13 +108,17 @@ const Profile = ({ route, navigation }) => {
           }
         >
           <Text style={styles.textButton}>Update Profile</Text>
-        </Button> 
- 
-        <Button block dark   rounded onPress={() => navigation.replace("CreateTrip")}>
+        </Button>
+
+        <Button
+          block
+          dark
+          rounded
+          onPress={() => navigation.replace("CreateTrip")}
+        >
           <Text style={styles.textButton}>Create New Trip</Text>
         </Button>
-        <Button block dark onPress={() => handleSignout()}>
- 
+        <Button block dark rounded onPress={() => handleSignout()}>
           <Text style={styles.textButton}>Signout</Text>
         </Button>
       </Content>
