@@ -1,9 +1,5 @@
 import { Body, Card, Left } from "native-base";
- 
-import { TouchableOpacity, Alert, Image } from "react-native";
- 
- 
- 
+import { TouchableOpacity, Alert } from "react-native";
 import React from "react";
 import { observer } from "mobx-react";
 import authStore from "../stores/authStore";
@@ -17,6 +13,7 @@ import {
   RefreshIcon,
   TrashIcon,
   TripItemImage,
+  TripOwner,
 } from "../styles";
 const TripItem = ({ trip, navigation }) => {
   const owner = usersStore.users.find((user) => user.id === trip.userId);
@@ -29,6 +26,14 @@ const TripItem = ({ trip, navigation }) => {
           <Left>
             <Body>
               <TripTitle>{trip.title}</TripTitle>
+              <TripOwner
+                note
+                onPress={() =>
+                  navigation.navigate("Profile", { profileOwner: owner })
+                }
+              >
+                By {owner.username}
+              </TripOwner>
             </Body>
           </Left>
           {trip.image ? (
