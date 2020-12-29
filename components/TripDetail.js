@@ -21,6 +21,7 @@ const TripDetail = ({ route, navigation, navigation: { goBack } }) => {
   if (profileStore.loading || tripStore.loading || usersStore.loading)
     return <Spinner />;
   const { trip } = route.params;
+  const owner = usersStore.users.find((user) => user.id === trip.userId);
   return (
     <Content>
       <DetailsWrapper>
@@ -28,12 +29,19 @@ const TripDetail = ({ route, navigation, navigation: { goBack } }) => {
           <TripTitle>{trip.title}</TripTitle>
         </TripCardItem>
         <TripCardItem>
-          {/* <TripItemImage
+          <TripItemImage
             source={{ uri: trip.image.replace("localhost", ip) }}
-          /> */}
+          />
         </TripCardItem>
         <TripCardItem>
-          <TripOwner>Trip Owner: </TripOwner>
+          <TripOwner
+            note
+            onPress={() =>
+              navigation.navigate("Profile", { profileOwner: owner })
+            }
+          >
+            By {owner.username}
+          </TripOwner>
         </TripCardItem>
 
         <TripCardItem>

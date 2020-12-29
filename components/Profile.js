@@ -1,5 +1,5 @@
 import React from "react";
-import { Image, Spinner, StyleSheet, Text, View } from "react-native";
+import { Image, Spinner, StyleSheet, Text, View, Left } from "react-native";
 import { observer } from "mobx-react";
 import profileStore from "../stores/profileStore";
 import authStore from "../stores/authStore";
@@ -10,7 +10,6 @@ import TripItem from "./TripItem";
 import TripTitle from "./TripTitle";
 import ProfileUpdate from "./ProfileUpdate";
 import { Body, Button, CardItem, Content } from "native-base";
-
 
 const Profile = ({ route, navigation }) => {
   if (profileStore.loading || tripStore.loading || usersStore.loading)
@@ -23,7 +22,6 @@ const Profile = ({ route, navigation }) => {
   const mytripList = tripStore.trips
     .filter((trip) => trip.userId === profileOwner.id)
     .map((trip) => (
-
       <TripTitle trip={trip} key={trip.id} navigation={navigation} />
     ));
 
@@ -39,16 +37,16 @@ const Profile = ({ route, navigation }) => {
       <Content padder>
         <Text style={styles.textTitle}>Profile {profileOwner.username}</Text>
 
-        {/* <Left>
-            <CardItem cardBody>
-              <Image
-                source={{
-                  uri: userProfile.image.replace("localhost", ip),
-                }}
-                style={{ height: 100, width: 100, flex: 0 }}
-              />
-            </CardItem>
-          </Left> */}
+        <Left>
+          <CardItem cardBody>
+            <Image
+              source={{
+                uri: userProfile.image.replace("localhost", ip),
+              }}
+              style={{ height: 100, width: 100, flex: 0 }}
+            />
+          </CardItem>
+        </Left>
 
         <CardItem bordered>
           <Body>

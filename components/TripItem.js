@@ -38,13 +38,13 @@ const TripItem = ({ trip, navigation }) => {
               </TripOwner>
             </Body>
           </Left>
-          {/* {trip.image ? (
+          {trip.image ? (
             <TripItemImage
               source={{
                 uri: trip.image.replace("localhost", ip),
               }}
             />
-          ) : null} */}
+          ) : null}
         </TripCardItem>
         <IconWrapper>
           {authStore.user.id === trip.userId ? (
