@@ -111,8 +111,8 @@ const Profile = ({ route, navigation }) => {
         >
           <Text style={styles.textButton}>Update Profile</Text>
         </Button> 
- 
-        <Button block dark   rounded onPress={() => navigation.replace("CreateTrip")}>
+           <Button block dark onPress={() => navigation.navigate("CreateTrip")}>
+
           <Text style={styles.textButton}>Create New Trip</Text>
         </Button>
         <Button block dark onPress={() => handleSignout()}>
