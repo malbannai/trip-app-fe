@@ -61,7 +61,10 @@ const Signup = () => {
           <Text style={styles.textButton}>Signup</Text>
         </Button>
       </Form>
-      <AuthOther onPress={() => navigation.replace("Signin")}>
+      <AuthOther
+        onPress={() => navigation.replace("Signin")}
+        style={styles.textTitle}
+      >
         Click here to sign in!
       </AuthOther>
     </Container>
