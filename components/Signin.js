@@ -5,7 +5,6 @@ import { StyleSheet, Text } from "react-native";
 import { AuthOther } from "../styles";
 import authStore from "../stores/authStore";
 import { observer } from "mobx-react";
-import usersStore from "../stores/usersStore";
 
 const Signin = ({ navigation }) => {
   const [user, setUser] = useState({

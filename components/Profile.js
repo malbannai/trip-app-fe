@@ -1,5 +1,5 @@
 import React from "react";
-import { Spinner, StyleSheet, Text, View } from "react-native";
+import { Image, Spinner, StyleSheet, Text, View } from "react-native";
 import { observer } from "mobx-react";
 import profileStore from "../stores/profileStore";
 import authStore from "../stores/authStore";
@@ -10,6 +10,7 @@ import TripItem from "./TripItem";
 import TripTitle from "./TripTitle";
 import ProfileUpdate from "./ProfileUpdate";
 import { Body, Button, CardItem, Content } from "native-base";
+
 
 const Profile = ({ route, navigation }) => {
   if (profileStore.loading || tripStore.loading || usersStore.loading)
@@ -22,8 +23,11 @@ const Profile = ({ route, navigation }) => {
   const mytripList = tripStore.trips
     .filter((trip) => trip.userId === profileOwner.id)
     .map((trip) => (
-      <TripItem trip={trip} key={trip.id} navigation={navigation} />
+
+      <TripTitle trip={trip} key={trip.id} navigation={navigation} />
     ));
+
+  //  <TripItem trip={trip} key={trip.id} navigation={navigation} />
 
   const handleSignout = () => {
     authStore.signout();
@@ -65,7 +69,6 @@ const Profile = ({ route, navigation }) => {
             <Text style={styles.buttonWrapper}>{mytripList}</Text>
           </Body>
         </CardItem>
-
         <CardItem footer bordered>
           <Text>Total number of trips : </Text>
           <Text>{mytripList.length}</Text>
