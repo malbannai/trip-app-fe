@@ -90,7 +90,7 @@ const Profile = ({ route, navigation }) => {
         <Button block dark onPress={() => navigation.replace("TripList")}>
           <Text style={styles.textButton}>Explore Trips</Text>
         </Button>
-        <Button block dark onPress={() => navigation.replace("CreateTrip")}>
+        <Button block dark onPress={() => navigation.navigate("CreateTrip")}>
           <Text style={styles.textButton}>Create New Trip</Text>
         </Button>
         <Button block dark onPress={() => handleSignout()}>

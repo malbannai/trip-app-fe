@@ -1,9 +1,12 @@
-import { Button, Content, Text } from "native-base";
+import { Button, Content, Text, Spinner } from "native-base";
 import React from "react";
 import ip from "../stores/ipaddress";
 import { StyleSheet } from "react-native";
 import { observer } from "mobx-react";
 import authStore from "../stores/authStore";
+import profileStore from "../stores/profileStore";
+import usersStore from "../stores/usersStore";
+import tripStore from "../stores/tripStore";
 import {
   TripCardItem,
   TripItemImage,
@@ -14,8 +17,9 @@ import {
 } from "../styles";
 
 const TripDetail = ({ route, navigation }) => {
+  if (profileStore.loading || tripStore.loading || usersStore.loading)
+    return <Spinner />;
   const { trip } = route.params;
-  console.log("details trip>>", trip);
   return (
     <Content>
       <DetailsWrapper>
@@ -28,7 +32,7 @@ const TripDetail = ({ route, navigation }) => {
           />
         </TripCardItem>
         <TripCardItem>
-          <TripOwner>Trip Owner: {trip.user.firstName}</TripOwner>
+          <TripOwner>Trip Owner: </TripOwner>
         </TripCardItem>
 
         <TripCardItem>
