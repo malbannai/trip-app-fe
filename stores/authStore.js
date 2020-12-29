@@ -5,7 +5,9 @@ import AsyncStorage from "@react-native-community/async-storage";
 
 class AuthStore {
   users = [];
-  user = null;
+  user = {
+    id: 0,
+  };
   loading = true;
 
   constructor() {
@@ -50,11 +52,13 @@ class AuthStore {
 
   signout = () => {
     delete instance.defaults.headers.common.Authorization;
-    this.user = null;
+    this.user = {
+      id: 0,
+      username: "guest",
+    };
   };
 }
 
 const authStore = new AuthStore();
-// authStore.checkForToken();
-
+authStore.checkForToken();
 export default authStore;

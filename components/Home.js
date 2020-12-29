@@ -9,15 +9,13 @@ import {
 
 import React from "react";
 import bgimage from "../onroad.jpg";
-import { observer } from "mobx-react";
 import authStore from "../stores/authStore";
-// Styling
 
 const Home = ({ navigation }) => {
   const onClickNext = () => {
-    authStore.user
+    authStore.user.id >= 0
       ? navigation.navigate("TripList")
-      : navigation.navigate("Signin");
+      : alert("You are not passing home");
   };
   return (
     <HomeBackground source={bgimage}>
@@ -35,4 +33,4 @@ const Home = ({ navigation }) => {
   );
 };
 
-export default observer(Home);
+export default Home;

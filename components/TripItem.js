@@ -1,5 +1,9 @@
 import { Body, Card, Left } from "native-base";
+ 
 import { TouchableOpacity, Alert, Image } from "react-native";
+ 
+ 
+ 
 import React from "react";
 import { observer } from "mobx-react";
 import authStore from "../stores/authStore";

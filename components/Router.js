@@ -6,6 +6,7 @@ import React from "react";
 import Signin from "./Signin";
 import Signup from "./Signup";
 import TripDetail from "./TripDetail";
+import GuestUserProfile from "./GuestUserProfile";
 import TripUpdate from "./TripUpdate";
 import TripList from "./TripList";
 import { createStackNavigator } from "@react-navigation/stack";
@@ -61,9 +62,16 @@ const Router = () => {
           options={{ headerShown: true }}
         />
         <Screen
+ 
           name="ProfileUpdate"
           component={ProfileUpdate}
           options={{ headerShown: true }}
+          />
+  <Screen
+          name="GuestUserProfile"
+          component={GuestUserProfile}
+          options={{ headerShown: false }}
+ 
         />
       </Navigator>
     </NavigationContainer>

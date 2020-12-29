@@ -25,6 +25,7 @@ const Profile = ({ route, navigation }) => {
   if (profileStore.loading || tripStore.loading || usersStore.loading)
     return <Spinner />;
   const { profileOwner } = route.params;
+  profileOwner.id === 0 ? navigation.navigate("GuestUserProfile") : null;
   console.log(profileOwner);
   // const profileOwner = usersStore.users.find(
   //   (user) => user.id === authStore.user.id
@@ -34,10 +35,18 @@ const Profile = ({ route, navigation }) => {
   const mytripList = tripStore.trips
     .filter((trip) => trip.userId === profileOwner.id)
     .map((trip) => (
+ 
       <TripItem trip={trip} key={trip.id} navigation={navigation} />
     ));
 
   // <TripTitle trip={trip} key={trip.id} navigation={navigation} />
+ 
+
+  const handleSignout = () => {
+    authStore.signout();
+    navigation.navigate("TripList");
+  };
+ 
   return (
     <Container>
       <Header />
@@ -101,17 +110,13 @@ const Profile = ({ route, navigation }) => {
           }
         >
           <Text style={styles.textButton}>Update Profile</Text>
-        </Button>
-
-        <Button
-          block
-          dark
-          rounded
-          onPress={() => navigation.replace("CreateTrip")}
-        >
+        </Button> 
+ 
+        <Button block dark   rounded onPress={() => navigation.replace("CreateTrip")}>
           <Text style={styles.textButton}>Create New Trip</Text>
         </Button>
-        <Button block dark rounded onPress={() => authStore.signout()}>
+        <Button block dark onPress={() => handleSignout()}>
+ 
           <Text style={styles.textButton}>Signout</Text>
         </Button>
       </Content>
