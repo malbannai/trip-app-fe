@@ -8,6 +8,7 @@ import usersStore from "../stores/usersStore";
 import ip from "../stores/ipaddress";
 import TripItem from "./TripItem";
 import TripTitle from "./TripTitle";
+import ProfileUpdate from "./ProfileUpdate";
 import {
   Body,
   Button,
@@ -30,17 +31,22 @@ const Profile = ({ route, navigation }) => {
   //   (user) => user.id === authStore.user.id
   // );
   const userProfile = profileStore.getprofileByuserId(profileOwner.id);
+  console.log("userProfile", userProfile);
   const mytripList = tripStore.trips
     .filter((trip) => trip.userId === profileOwner.id)
     .map((trip) => (
-      //  <TripTitle trip={trip} key={trip.id} navigation={navigation} />
+ 
       <TripItem trip={trip} key={trip.id} navigation={navigation} />
     ));
+
+  // <TripTitle trip={trip} key={trip.id} navigation={navigation} />
+ 
 
   const handleSignout = () => {
     authStore.signout();
     navigation.navigate("TripList");
   };
+ 
   return (
     <Container>
       <Header />
@@ -51,19 +57,19 @@ const Profile = ({ route, navigation }) => {
           </CardItem>
           <Left>
             <CardItem cardBody>
-              {/* <Image
+              <Image
                 source={{
                   uri: userProfile.image.replace("localhost", ip),
                 }}
                 style={{ height: 100, width: 100, flex: 0 }}
-              /> */}
+              />
             </CardItem>
           </Left>
 
           <CardItem bordered>
-            {/* <Body>
+            <Body>
               <Text>{profileOwner.bio}</Text>
-            </Body> */}
+            </Body>
           </CardItem>
           <CardItem bordered>
             <Body>
@@ -87,13 +93,30 @@ const Profile = ({ route, navigation }) => {
         </Card>
       </Content>
       <Content>
-        <Button block dark onPress={() => navigation.replace("TripList")}>
+        <Button
+          block
+          dark
+          rounded
+          onPress={() => navigation.replace("TripList")}
+        >
           <Text style={styles.textButton}>Explore Trips</Text>
         </Button>
-        <Button block dark onPress={() => navigation.replace("CreateTrip")}>
+        <Button
+          block
+          dark
+          rounded
+          onPress={() =>
+            navigation.replace("ProfileUpdate", { profileOwner: profileOwner })
+          }
+        >
+          <Text style={styles.textButton}>Update Profile</Text>
+        </Button> 
+ 
+        <Button block dark   rounded onPress={() => navigation.replace("CreateTrip")}>
           <Text style={styles.textButton}>Create New Trip</Text>
         </Button>
         <Button block dark onPress={() => handleSignout()}>
+ 
           <Text style={styles.textButton}>Signout</Text>
         </Button>
       </Content>

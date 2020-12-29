@@ -12,6 +12,7 @@ import TripList from "./TripList";
 import { createStackNavigator } from "@react-navigation/stack";
 import { observer } from "mobx-react";
 import ActionBarImage from "./ActionBarImage";
+import ProfileUpdate from "./ProfileUpdate";
 
 const { Navigator, Screen } = createStackNavigator();
 
@@ -61,9 +62,16 @@ const Router = () => {
           options={{ headerShown: true }}
         />
         <Screen
+ 
+          name="ProfileUpdate"
+          component={ProfileUpdate}
+          options={{ headerShown: true }}
+          />
+  <Screen
           name="GuestUserProfile"
           component={GuestUserProfile}
           options={{ headerShown: false }}
+ 
         />
       </Navigator>
     </NavigationContainer>

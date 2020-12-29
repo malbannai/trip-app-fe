@@ -20,6 +20,15 @@ class ProfileStore {
       console.error("ProfileStore -> fetchProfiles -> error", error);
     }
   };
+  updateProfile = async (profileOwner, profileData) => {
+    try {
+      await instance.put(`/profiles/${profileOwner.id}`, profileData);
+      const profile = this.profiles.find((item) => item.id === profileData.id);
+      for (const key in profile) profile[key] = profileData[key];
+    } catch (error) {
+      console.log("ProfileStore -> updateProfile -> error", error);
+    }
+  };
 }
 const profileStore = new ProfileStore(); //new instance
 profileStore.fetchProfiles();

@@ -16,7 +16,9 @@ export const TopStyling = styled.View`
 
 export const Title = styled.Text`
   color: white;
+ 
   font-size: 60px;
+ 
   text-align: center;
   font-weight: bold;
 `;

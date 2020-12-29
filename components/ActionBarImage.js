@@ -30,9 +30,11 @@ const ActionBarImage = () => {
   };
   return (
     <>
+
       {authStore.user.id >= 0 ? (
         <UserIcon name="person" type="Ionicons" onPress={() => handleUser()} />
       ) : null}
+
     </>
   );
 };
